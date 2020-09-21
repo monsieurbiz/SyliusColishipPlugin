@@ -1,0 +1,11 @@
+monsieurbiz_coliship:
+    form:
+        address:
+            service: Service
+            entrance: Entrée / bâtiment / immeuble / résidence
+            locality: Lieu dit / complément
+            floor: Étage / couloir / escalier / appartement
+            doorCode1: Code porte 1
+            doorCode2: Code porte 2
+            intercom: Interphone
+            shippingInstructions: Instructions de livraison

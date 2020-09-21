@@ -12,6 +12,6 @@ services:
         Sylius\Component\Resource\Model\ResourceInterface:
             autowire: false
 
-#    MonsieurBiz\SyliusColishipPlugin\Form\:
-#        resource: '../../Form'
-#        tags: ['form.type']
+    MonsieurBiz\SyliusColishipPlugin\Form\Extension\:
+        resource: '../../Form/Extension'
+        tags: ['form.type_extension']

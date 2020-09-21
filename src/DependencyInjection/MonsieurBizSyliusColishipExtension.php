@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Settings plugin for Sylius.
+ * This file is part of Monsieur Biz' Coliship plugin for Sylius.
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *

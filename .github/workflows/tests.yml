@@ -99,7 +99,7 @@ jobs:
       - name: Run standalone symfony flex server
         run: |
           echo ${{ github.token }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-          docker run --rm --name flex -d -v $PWD/plugin/recipe:/var/www/flex/var/repo/private/monsieurbiz/sylius-settings-plugin -p 80:80 docker.pkg.github.com/monsieurbiz/docker/symfony-flex-server:latest contrib official
+          docker run --rm --name flex -d -v $PWD/plugin/recipe:/var/www/flex/var/repo/private/monsieurbiz/sylius-coliship-plugin -p 80:80 docker.pkg.github.com/monsieurbiz/docker/symfony-flex-server:latest contrib official
           docker ps
 
       - uses: actions/cache@v1
@@ -143,8 +143,9 @@ jobs:
         working-directory: ./sylius
         run: |
           composer config platform.php ${{ matrix.php }}
-          cp -Rv ../plugin/recipes/dev/config/* ./config/
-          composer require monsieurbiz/sylius-settings-plugin="*@dev"
+          cp -Rv ../plugin/src/Resources/templates/* ./templates/
+          cp -Rv ../plugin/tests/Application/src/Entity/* ./src/Entity/
+          composer require monsieurbiz/sylius-coliship-plugin="*@dev"
 
       - name: Show flex server logs
         run: docker logs --tail 100 flex

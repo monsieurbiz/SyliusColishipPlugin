@@ -3,7 +3,7 @@ SHELL=/bin/bash
 SYMFONY=cd tests/Application && symfony
 COMPOSER=symfony composer
 CONSOLE=${SYMFONY} console
-export COMPOSE_PROJECT_NAME=settings
+export COMPOSE_PROJECT_NAME=coliship
 COMPOSE=docker-compose
 YARN=cd tests/Application && yarn
 
@@ -66,7 +66,7 @@ test.schema: ## Validate MySQL Schema
 	${CONSOLE} doctrine:schema:validate
 
 test.twig: ## Validate Twig templates
-	${CONSOLE} lint:twig -e prod --no-debug templates/ ../../src/Resources/views/
+	${CONSOLE} lint:twig -e prod --no-debug templates/ ../../src/Resources/
 
 ###
 ### SYLIUS
@@ -106,7 +106,6 @@ docker.down: ## Stop and remove the docker containers
 .PHONY: docker.down
 
 server.start: ## Run the local webserver using Symfony
-	${SYMFONY} local:proxy:domain:attach settings
 	${SYMFONY} local:server:start -d
 
 server.stop: ## Stop the local webserver

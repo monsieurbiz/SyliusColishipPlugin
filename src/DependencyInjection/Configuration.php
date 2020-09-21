@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Settings plugin for Sylius.
+ * This file is part of Monsieur Biz' Coliship plugin for Sylius.
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
@@ -23,15 +23,12 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('monsieurbiz_sylius_coliship');
-
+        return new TreeBuilder('monsieurbiz_sylius_coliship');
 //        if (method_exists($treeBuilder, 'getRootNode')) {
 //            $rootNode = $treeBuilder->getRootNode();
 //        } else {
 //            // BC layer for symfony/config 4.1 and older
 //            $rootNode = /** @scrutinizer ignore-deprecated */ $treeBuilder->root('monsieurbiz_sylius_coliship');
 //        }
-
-        return $treeBuilder;
     }
 }

@@ -1,0 +1,53 @@
+{% if type is defined %}
+    {% set type = type ~ '-' %}
+{% else %}
+    {% set type = null %}
+{% endif %}
+
+<div class="two fields">
+    {{ form_row(form.firstName, sylius_test_form_attribute(type ~ 'first-name')) }}
+    {{ form_row(form.lastName, sylius_test_form_attribute(type ~ 'last-name')) }}
+</div>
+<div class="two fields">
+    {{ form_row(form.company, sylius_test_form_attribute(type ~ 'company')) }}
+    {{ form_row(form.service, sylius_test_form_attribute(type ~ 'service')) }}
+</div>
+<div class="two fields">
+    {{ form_row(form.street, sylius_test_form_attribute(type ~ 'street')) }}
+    {{ form_row(form.entrance, sylius_test_form_attribute(type ~ 'entrance')) }}
+</div>
+<div class="two fields">
+    {{ form_row(form.locality, sylius_test_form_attribute(type ~ 'locality')) }}
+    {{ form_row(form.floor, sylius_test_form_attribute(type ~ 'floor')) }}
+</div>
+
+<div class="two fields">
+    {% include '@SyliusShop/Common/Form/_countryCode.html.twig' with {'form': form.countryCode} %}
+    <div class="province-container field" data-url="{{ path('sylius_shop_ajax_render_province_form') }}">
+        {% if form.provinceCode is defined %}
+            {{ form_row(form.provinceCode, sylius_test_form_attribute('province-code')|sylius_merge_recursive( {'attr': {'class': 'ui dropdown'}})) }}
+        {% elseif form.provinceName is defined %}
+            {{ form_row(form.provinceName, sylius_test_form_attribute('province-name')) }}
+        {% endif %}
+    </div>
+    {% if form.provinceCode is defined %}
+        {{ form_errors(form) }}
+    {% endif %}
+</div>
+
+<div class="two fields">
+    {{ form_row(form.postcode, sylius_test_form_attribute(type ~ 'postcode')) }}
+    {{ form_row(form.city, sylius_test_form_attribute(type ~ 'city')) }}
+</div>
+
+<div class="two fields">
+    {{ form_row(form.phoneNumber, sylius_test_form_attribute(type ~ 'phoneNumber')) }}
+    <div class="three field fields">
+        {{ form_row(form.doorCode1, sylius_test_form_attribute(type ~ 'doorCode1')) }}
+        {{ form_row(form.doorCode2, sylius_test_form_attribute(type ~ 'doorCode2')) }}
+        {{ form_row(form.intercom, sylius_test_form_attribute(type ~ 'intercom')) }}
+    </div>
+</div>
+
+{{ form_row(form.shippingInstructions) }}
+{#{{ form_row(form.recipientReference) }}#}
