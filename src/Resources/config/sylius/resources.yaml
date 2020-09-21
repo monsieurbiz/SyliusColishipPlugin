@@ -1,0 +1,7 @@
+#sylius_resource:
+#    resources:
+#        monsieurbiz_settings.setting:
+#            classes:
+#                model: MonsieurBiz\SyliusSettingsPlugin\Entity\Setting\Setting
+#                repository: MonsieurBiz\SyliusSettingsPlugin\Repository\SettingRepository
+#                factory: MonsieurBiz\SyliusSettingsPlugin\Factory\SettingFactory
