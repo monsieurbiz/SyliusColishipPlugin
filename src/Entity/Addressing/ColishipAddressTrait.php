@@ -22,55 +22,55 @@ trait ColishipAddressTrait
      * @ORM\Column(type="string", length=35, nullable=true)
      * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $service;
+    protected ?string $service = null;
 
     /**
      * @ORM\Column(type="string", length=35, nullable=true)
      * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $entrance;
+    protected ?string $entrance = null;
 
     /**
      * @ORM\Column(type="string", length=35, nullable=true)
      * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $locality;
+    protected ?string $locality = null;
 
     /**
      * @ORM\Column(type="string", length=35, nullable=true)
      * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $floor;
+    protected ?string $floor = null;
 
     /**
      * @ORM\Column(name="door_code1", type="string", length=8, nullable=true)
      * @Assert\Length(max=8, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $doorCode1;
+    protected ?string $doorCode1 = null;
 
     /**
      * @ORM\Column(name="door_code2", type="string", length=8, nullable=true)
      * @Assert\Length(max=8, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $doorCode2;
+    protected ?string $doorCode2 = null;
 
     /**
      * @ORM\Column(name="intercom", type="string", length=30, nullable=true)
      * @Assert\Length(max=30, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $intercom;
+    protected ?string $intercom = null;
 
     /**
      * @ORM\Column(name="shipping_instruction", type="string", length=70, nullable=true)
      * @Assert\Length(max=70, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $shippingInstructions;
+    protected ?string $shippingInstructions = null;
 
     /**
      * @ORM\Column(name="recipient_reference", type="string", length=17, nullable=true)
      * @Assert\Length(max=17, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
-    protected ?string $recipientReference;
+    protected ?string $recipientReference = null;
 
     /**
      * @return string|null
