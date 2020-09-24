@@ -1,0 +1,8 @@
+Sylius\Component\Core\Model\Order:
+    properties:
+        shippingAddress:
+            - Valid:
+                  groups: [mbiz_coliship, sylius_shipping_address_update]
+        billingAddress:
+            - Valid:
+                  groups: [mbiz_coliship, sylius_shipping_address_update]

@@ -20,55 +20,55 @@ trait ColishipAddressTrait
 {
     /**
      * @ORM\Column(type="string", length=35, nullable=true)
-     * @Assert\Length(max=35)
+     * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $service;
 
     /**
      * @ORM\Column(type="string", length=35, nullable=true)
-     * @Assert\Length(max=35)
+     * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $entrance;
 
     /**
      * @ORM\Column(type="string", length=35, nullable=true)
-     * @Assert\Length(max=35)
+     * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $locality;
 
     /**
      * @ORM\Column(type="string", length=35, nullable=true)
-     * @Assert\Length(max=35)
+     * @Assert\Length(max=35, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $floor;
 
     /**
      * @ORM\Column(name="door_code1", type="string", length=8, nullable=true)
-     * @Assert\Length(max=8)
+     * @Assert\Length(max=8, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $doorCode1;
 
     /**
      * @ORM\Column(name="door_code2", type="string", length=8, nullable=true)
-     * @Assert\Length(max=8)
+     * @Assert\Length(max=8, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $doorCode2;
 
     /**
      * @ORM\Column(name="intercom", type="string", length=30, nullable=true)
-     * @Assert\Length(max=30)
+     * @Assert\Length(max=30, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $intercom;
 
     /**
      * @ORM\Column(name="shipping_instruction", type="string", length=70, nullable=true)
-     * @Assert\Length(max=70)
+     * @Assert\Length(max=70, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $shippingInstructions;
 
     /**
      * @ORM\Column(name="recipient_reference", type="string", length=17, nullable=true)
-     * @Assert\Length(max=17)
+     * @Assert\Length(max=17, groups={"mbiz_coliship", "sylius_shipping_address_update"})
      */
     protected ?string $recipientReference;
 
