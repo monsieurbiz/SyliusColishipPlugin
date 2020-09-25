@@ -39,18 +39,16 @@
         <br/>
     {% endif %}
 
-    {% if address.doorCode1 is not null or address.doorCode2 is not null or address.intercom is not null %}
-        {% if address.doorCode1 is not null %}
-            {{ "monsieurbiz_coliship.ui.address.doorCode1"|trans({"%code%": address.doorCode1}) }}
-            {% if address.doorCode2 is not null or address.intercom is not null %}/{% endif %}
-        {% endif %}
-        {% if address.doorCode2 is not null %}
-            {{ "monsieurbiz_coliship.ui.address.doorCode2"|trans({"%code%": address.doorCode2}) }}
-            {% if address.intercom is not null %}/{% endif %}
-        {% endif %}
-        {% if address.intercom is not null %}
-            {{ "monsieurbiz_coliship.ui.address.intercom"|trans({"%intercom%": address.intercom}) }}
-        {% endif %}
+    {% if address.doorCode1 is not null %}
+        {{ "monsieurbiz_coliship.ui.address.doorCode1"|trans({"%code%": address.doorCode1}) }}
+        <br/>
+    {% endif %}
+    {% if address.doorCode2 is not null %}
+        {{ "monsieurbiz_coliship.ui.address.doorCode2"|trans({"%code%": address.doorCode2}) }}
+        <br/>
+    {% endif %}
+    {% if address.intercom is not null %}
+        {{ "monsieurbiz_coliship.ui.address.intercom"|trans({"%intercom%": address.intercom}) }}
         <br/>
     {% endif %}
 
