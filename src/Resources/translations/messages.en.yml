@@ -1,4 +1,13 @@
 monsieurbiz_coliship:
+    ui:
+        address:
+            phonenumber: 'Tel: %number%'
+            entrance: 'Entry / building / residence: %entrance%'
+            floor: 'Floor / Corridor / Stair / Appartment: %floor%'
+            doorCode1: 'Door code 1: %code%'
+            doorCode2: 'Door code 2: %code%'
+            intercom: 'Intercom: %intercom%'
+            shippingInstructions: 'Delivery instructions: %instructions%'
     form:
         address:
             service: Service

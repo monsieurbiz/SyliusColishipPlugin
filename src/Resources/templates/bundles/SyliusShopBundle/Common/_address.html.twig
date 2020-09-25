@@ -4,44 +4,57 @@
     {% if address.company is not null %}
         <strong>{{ address.company }}</strong><br>
     {% endif %}
+
     {% if address.service is not null %}
         {{ address.service }}<br/>
     {% endif %}
+
     <strong {{ sylius_test_html_attribute('full-name ', "%s %s"|format(address.firstName, address.lastName)) }}>{{ address.firstName }} {{ address.lastName }}</strong><br>
-    {% if address.phoneNumber is not null %}
-        {{ address.phoneNumber }}<br/>
-    {% endif %}
+
     {% if address.locality is not null %}
         {{ address.locality }}<br/>
     {% endif %}
+
     {{ address.street }}<br/>
-    {% if address.entrance is not null or address.floor is not null %}
-        {% if address.entrance is not null %}
-            {{ address.entrance }}{% if address.floor is not null %}, {% endif %}
-        {% endif %}
-        {% if address.floor is not null %}
-            {{ address.floor }}
-        {% endif %}
-        <br/>
-    {% endif %}
-    {{ address.city }}, {{ address.postcode }}<br/>
+
+    {{ address.postcode }} {{ address.city }}<br/>
+
     {% if address|sylius_province_name is not empty %}
         {{ address|sylius_province_name }}<br/>
     {% endif %}
+
     {{ flags.fromCountryCode(address.countryCode) }}
     {{ address.countryCode|sylius_country_name|upper }}<br/>
 
-    {% if address.doorCode1 is not null %}
-        Code porte 1 : {{ address.doorCode1 }}
-    {% endif %},
-    {% if address.doorCode2 is not null %}
-        Code porte 2 : {{ address.doorCode2 }}
-    {% endif %},
-    {% if address.intercom is not null %}
-        Interphone : {{ address.intercom }}
+    {% if address.phoneNumber is not null %}
+        {{ "monsieurbiz_coliship.ui.address.phonenumber"|trans({"%number%": address.phoneNumber}) }}<br/>
     {% endif %}
-    <br/>
+
+    {% if address.entrance is not null %}
+        {{ "monsieurbiz_coliship.ui.address.entrance"|trans({"%entrance%": address.entrance}) }}
+        <br/>
+    {% endif %}
+    {% if address.floor is not null %}
+        {{ "monsieurbiz_coliship.ui.address.floor"|trans({"%floor%": address.floor}) }}
+        <br/>
+    {% endif %}
+
+    {% if address.doorCode1 is not null or address.doorCode2 is not null or address.intercom is not null %}
+        {% if address.doorCode1 is not null %}
+            {{ "monsieurbiz_coliship.ui.address.doorCode1"|trans({"%code%": address.doorCode1}) }}
+            {% if address.doorCode2 is not null or address.intercom is not null %}/{% endif %}
+        {% endif %}
+        {% if address.doorCode2 is not null %}
+            {{ "monsieurbiz_coliship.ui.address.doorCode2"|trans({"%code%": address.doorCode2}) }}
+            {% if address.intercom is not null %}/{% endif %}
+        {% endif %}
+        {% if address.intercom is not null %}
+            {{ "monsieurbiz_coliship.ui.address.intercom"|trans({"%intercom%": address.intercom}) }}
+        {% endif %}
+        <br/>
+    {% endif %}
+
     {% if address.shippingInstructions is not null %}
-        {{ address.shippingInstructions }}<br/>
+        {{ "monsieurbiz_coliship.ui.address.shippingInstructions"|trans({"%instructions%": address.shippingInstructions}) }}
     {% endif %}
 </address>
