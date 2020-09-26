@@ -1,0 +1,12 @@
+sylius_grid:
+    templates:
+        action:
+            coliship_export: "@MonsieurBizSyliusColishipPlugin/Admin/Order/Grid/Action/_coliship_export.html.twig"
+    grids:
+        sylius_admin_order:
+            actions:
+                main:
+                    coliship_export:
+                        type: coliship_export
+                        label: monsieurbiz_coliship.admin.ui.actions.export
+

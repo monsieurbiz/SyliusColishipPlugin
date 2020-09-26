@@ -1,0 +1,11 @@
+monsieurbiz_sylius_settings:
+    plugins:
+        monsieurbiz.coliship:
+            vendor_name: Monsieur Biz
+            vendor_url:
+            plugin_name: Coliship
+            description: "La Poste's Coliship settings"
+            icon: dolly flatbed
+            use_locales: false
+            classes:
+                form: MonsieurBiz\SyliusColishipPlugin\Form\SettingsType

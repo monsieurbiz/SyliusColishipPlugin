@@ -142,9 +142,12 @@ jobs:
       - name: Install plugin
         working-directory: ./sylius
         run: |
+          composer config minimum-stability dev
           composer config platform.php ${{ matrix.php }}
           cp -Rv ../plugin/src/Resources/templates/* ./templates/
           cp -Rv ../plugin/tests/Application/src/Entity/* ./src/Entity/
+          cp -Rv ../plugin/tests/Application/config/routes/monsieurbiz_settings_plugin.yaml ./config/routes/
+          cp -Rv ../plugin/tests/Application/config/packages/monsieurbiz_settings_plugin.yaml ./config/packages/
           composer require monsieurbiz/sylius-coliship-plugin="*@dev"
 
       - name: Show flex server logs

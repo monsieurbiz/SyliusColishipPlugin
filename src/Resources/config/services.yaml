@@ -16,7 +16,13 @@ services:
             autowire: false
         Sylius\Component\Resource\Model\ResourceInterface:
             autowire: false
+            
+    MonsieurBiz\SyliusColishipPlugin\:
+        resource: '../../'
 
-    MonsieurBiz\SyliusColishipPlugin\Form\Extension\:
-        resource: '../../Form/Extension'
-        tags: ['form.type_extension']
+    MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface $fmtDirectory: '@MonsieurBiz\SyliusColishipPlugin\Directory\FmtDirectory'
+    MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface $orderPaymentStateDirectory: '@MonsieurBiz\SyliusColishipPlugin\Directory\OrderPaymentStateDirectory'
+    MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface $orderShippingStateDirectory: '@MonsieurBiz\SyliusColishipPlugin\Directory\OrderShippingStateDirectory'
+    MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface $shippingMethodCodeDirectory: '@MonsieurBiz\SyliusColishipPlugin\Directory\ShippingMethodCodeDirectory'
+    MonsieurBiz\SyliusColishipPlugin\Mapping\MappingInterface $fmtMapping: '@MonsieurBiz\SyliusColishipPlugin\Mapping\FmtMapping'
+    MonsieurBiz\SyliusColishipPlugin\Exporter\ExporterInterface $colishipExporter: '@MonsieurBiz\SyliusColishipPlugin\Exporter\ColishipExporter'

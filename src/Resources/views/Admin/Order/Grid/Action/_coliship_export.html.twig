@@ -1,0 +1,25 @@
+{% set channels = monsieurbiz_coliship_export_channels() %}
+{% if channels|length > 0 %}
+    <div class="ui simple dropdown button orange" tabindex="0">
+        <div class="text">
+            <i class="dolly flatbed icon"></i>
+            {{ action.label|trans }}
+        </div>
+        <i class="dropdown icon">
+            <div class="menu" tabindex="-1"></div>
+        </i>
+        <div class="menu" tabindex="-1">
+            {% for channel in channels %}
+                <a href="{{ path('monsieurbiz_coliship_admin_export', {channelCode: channel.code}) }}" class="item">
+                    <div class="channel">
+                        <span class="ui medium empty circular label channel__item"
+                              style="background-color: {{ channel.color|default('#000') }}"></span>
+                        <span class="channel__item">
+                            {{ channel.name|default(channel.code) }}
+                        </span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

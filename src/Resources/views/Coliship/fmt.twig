@@ -1,0 +1,5 @@
+[GENERAL]
+{{ general }}
+[CHAMPS]
+{% for field in fields %}{{ field }}={{ loop.index }}
+{% endfor %}

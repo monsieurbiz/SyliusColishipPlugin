@@ -8,6 +8,11 @@ monsieurbiz_coliship:
             doorCode2: 'Code porte 2 : %code%'
             intercom: 'Interphone : %intercom%'
             shippingInstructions: 'Instructions de livraison : %instructions%'
+    admin:
+        ui:
+            actions:
+                export: Export Coliship
+                download_fmt: Télécharger le fichier FMT
     form:
         address:
             service: Service

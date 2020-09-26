@@ -1,0 +1,5 @@
+sylius_ui:
+    events:
+        monsieurbiz.coliship.settings.admin.update.actions:
+            blocks:
+                buttons: '@MonsieurBizSyliusColishipPlugin/Admin/Settings/Actions/_buttons.html.twig'
