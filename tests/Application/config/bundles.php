@@ -70,5 +70,6 @@ return [
     //Sylius\Bundle\ApiBundle\SyliusApiBundle::class => ['all' => true],
     //Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
     SyliusLabs\DoctrineMigrationsExtraBundle\SyliusLabsDoctrineMigrationsExtraBundle::class => ['all' => true],
+    MonsieurBiz\SyliusSettingsPlugin\MonsieurBizSyliusSettingsPlugin::class => ['all' => true],
     MonsieurBiz\SyliusColishipPlugin\MonsieurBizSyliusColishipPlugin::class => ['all' => true],
 ];
