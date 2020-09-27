@@ -10,8 +10,6 @@
     <img src="https://monsieurbiz.com/assets/images/sylius_badge_extension-artisan.png" width="100">
 </p>
 
-
-
 <h1 align="center">Coliship for Sylius</h1>
 
 [![Coliship Plugin license](https://img.shields.io/github/license/monsieurbiz/SyliusColishipPlugin?public)](https://github.com/monsieurbiz/SyliusColishipPlugin/blob/master/LICENSE)
@@ -33,6 +31,12 @@ This plugin gives you an enhanced address with all Coliship fields (that's all f
 ## Testing
 
 ⚙️ To Be Defined.
+
+## Sponsors
+
+This plugin is sponsored by:
+
+- [Epices Rœllinger](https://www.epices-roellinger.com/)
 
 ## Contributing
 
