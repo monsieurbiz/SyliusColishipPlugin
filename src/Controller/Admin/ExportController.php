@@ -46,7 +46,7 @@ final class ExportController extends AbstractController
             },
             200,
             [
-                'Content-Disposition' => 'attachment; filename="coliship_.csv"',
+                'Content-Disposition' => 'attachment; filename="coliship_' . date('Y-m-d') . '.csv"',
                 'Content-Type' => 'application/csv',
             ]
         );
