@@ -108,6 +108,7 @@ final class ColishipExporter implements ExporterInterface
         $event = new ProcessOrderEvent($channel, $order, $csvFields, $data);
         $this->eventDispatcher->dispatch($event, ProcessOrderEvent::NAME);
 
+        $data = $event->getData();
         foreach ($data as $key => $value) {
             $data[$key] = str_replace($this->getCsvEnclosure(), $this->getCsvEscape() . $this->getCsvEnclosure(), $value);
         }
