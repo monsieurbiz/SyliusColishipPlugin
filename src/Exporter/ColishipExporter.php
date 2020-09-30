@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace MonsieurBiz\SyliusColishipPlugin\Exporter;
 
+use Doctrine\ORM\QueryBuilder;
 use MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface;
 use MonsieurBiz\SyliusColishipPlugin\Event\ProcessOrderEvent;
 use MonsieurBiz\SyliusColishipPlugin\Mapping\MappingInterface;
@@ -150,9 +151,9 @@ final class ColishipExporter implements ExporterInterface
         $shippingState = $this->colishipSettings->getCurrentValue($channel, null, 'shippingState');
         $methodCode = $this->colishipSettings->getCurrentValue($channel, null, 'methodCode');
 
-        return $this->orderRepository
-            ->createQueryBuilder('o')
-            ->leftJoin('o.shipments', 's')
+        /** @var QueryBuilder $qb */
+        $qb = $this->orderRepository->createQueryBuilder('o');
+        return $qb->leftJoin('o.shipments', 's')
             ->leftJoin('s.method', 'sm')
             ->andWhere('o.channel = :channel')
             ->andWhere('o.paymentState = :paymentState')
@@ -162,6 +163,7 @@ final class ColishipExporter implements ExporterInterface
             ->setParameter('paymentState', $paymentState)
             ->setParameter('shippingState', $shippingState)
             ->setParameter('shippingMethod', $methodCode)
+            ->orderBy('o.number', 'ASC')
             ->getQuery()
             ->getResult()
         ;
