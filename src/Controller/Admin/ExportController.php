@@ -40,9 +40,12 @@ final class ExportController extends AbstractController
 
         return new StreamedResponse(
             function() use ($file): void {
+                ob_start();
                 while ($file->valid()) {
                     echo $file->fread(1024);
                 }
+                $content = iconv("UTF-8", "ISO-8859-1//TRANSLIT", ob_get_clean());
+                echo str_replace("\n", "\r\n", str_replace("\r", '', $content));
             },
             200,
             [
