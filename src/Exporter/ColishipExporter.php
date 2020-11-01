@@ -153,6 +153,7 @@ final class ColishipExporter implements ExporterInterface
 
         /** @var QueryBuilder $qb */
         $qb = $this->orderRepository->createQueryBuilder('o');
+
         return $qb->leftJoin('o.shipments', 's')
             ->leftJoin('s.method', 'sm')
             ->andWhere('o.channel = :channel')

@@ -26,6 +26,9 @@ jobs:
           sudo update-alternatives --set php /usr/bin/php${{ matrix.php }}
           php -v
 
+      - name: Composer v1
+        run: sudo composer self-update --1
+
       - uses: actions/cache@v1
         with:
           path: /home/runner/.composer/cache
@@ -35,7 +38,7 @@ jobs:
       - name: Install symfony CLI
         run: |
           curl https://get.symfony.com/cli/installer | bash
-          echo "::add-path::${HOME}/.symfony/bin"
+          echo ${HOME}/.symfony/bin >> $GITHUB_PATH
 
       - name: Validate composer.json
         run: composer validate --strict
@@ -79,12 +82,15 @@ jobs:
     steps:
       - name: Setup some envs
         run: |
-          echo ::set-env name=DATABASE_URL::mysql://root@127.0.0.1/sylius?serverVersion=mariadb-${{ matrix.mariadb_version }}
+          echo "DATABASE_URL=mysql://root@127.0.0.1/sylius?serverVersion=mariadb-${{ matrix.mariadb_version }}" >> $GITHUB_ENV
 
       - name: Switch PHP
         run: |
           sudo update-alternatives --set php /usr/bin/php${{ matrix.php }}
           php -v
+
+      - name: Composer v1
+        run: sudo composer self-update --1
 
       - name: Setup timezone
         run: |
@@ -99,7 +105,7 @@ jobs:
       - name: Run standalone symfony flex server
         run: |
           echo ${{ github.token }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-          docker run --rm --name flex -d -v $PWD/plugin/recipe:/var/www/flex/var/repo/private/monsieurbiz/sylius-coliship-plugin -p 80:80 docker.pkg.github.com/monsieurbiz/docker/symfony-flex-server:latest contrib official
+          docker run --rm --name flex -d -v $PWD/plugin/recipes:/var/www/flex/var/repo/private/monsieurbiz/sylius-coliship-plugin -p 80:80 docker.pkg.github.com/monsieurbiz/docker/symfony-flex-server:latest contrib official
           docker ps
 
       - uses: actions/cache@v1
@@ -111,7 +117,7 @@ jobs:
       - name: Install symfony CLI
         run: |
           curl https://get.symfony.com/cli/installer | bash
-          echo "::add-path::${HOME}/.symfony/bin"
+          echo ${HOME}/.symfony/bin >> $GITHUB_PATH
 
       - name: Composer Github Auth
         run: composer config -g github-oauth.github.com ${{ github.token }}
@@ -139,18 +145,29 @@ jobs:
         working-directory: ./sylius
         run: composer config secure-http false
 
-      - name: Install plugin
+      - name: Setup some requirements
         working-directory: ./sylius
         run: |
           composer config minimum-stability dev
           composer config platform.php ${{ matrix.php }}
-          cp -Rv ../plugin/src/Resources/templates/* ./templates/
+
+      - name: Install monsieurbiz/sylius-settings-plugin
+        working-directory: ./sylius
+        run: |
+          composer require monsieurbiz/sylius-settings-plugin="@rc" --no-scripts
+          sed -i -e "s/];/MonsieurBiz\\\SyliusSettingsPlugin\\\MonsieurBizSyliusSettingsPlugin::class => ['all' => true], ];/g" config/bundles.php
+          cp -Rv vendor/monsieurbiz/sylius-settings-plugin/recipes/1.0-dev/config/* config/
+          ./bin/console doctrine:migration:diff -n
+          ./bin/console doctrine:migration:migrate -n
+
+      - name: Install plugin
+        working-directory: ./sylius
+        run: |
           cp -Rv ../plugin/tests/Application/src/Entity/* ./src/Entity/
-          cp -Rv ../plugin/tests/Application/config/routes/monsieurbiz_settings_plugin.yaml ./config/routes/
-          cp -Rv ../plugin/tests/Application/config/packages/monsieurbiz_settings_plugin.yaml ./config/packages/
           composer require monsieurbiz/sylius-coliship-plugin="*@dev"
 
       - name: Show flex server logs
+        if: ${{ always() }}
         run: docker logs --tail 100 flex
 
       - name: Update database schema
