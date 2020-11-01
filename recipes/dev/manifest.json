@@ -4,6 +4,9 @@
             "all"
         ]
     },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    },
     "copy-from-package": {
         "src/Resources/templates/": "templates/"
     }
