@@ -144,6 +144,12 @@ jobs:
       - name: Allow unsecure localhost flex server
         working-directory: ./sylius
         run: composer config secure-http false
+        
+      - name: Setup some requirements
+        working-directory: ./sylius
+        run: |
+          composer config minimum-stability dev
+          composer config platform.php ${{ matrix.php }}
 
       - name: Install monsieurbiz/sylius-settings-plugin
         working-directory: ./sylius
@@ -157,8 +163,6 @@ jobs:
       - name: Install plugin
         working-directory: ./sylius
         run: |
-          composer config minimum-stability dev
-          composer config platform.php ${{ matrix.php }}
           cp -Rv ../plugin/src/Resources/templates/* ./templates/
           cp -Rv ../plugin/tests/Application/src/Entity/* ./src/Entity/
           cp -Rv ../plugin/tests/Application/config/routes/monsieurbiz_settings_plugin.yaml ./config/routes/
