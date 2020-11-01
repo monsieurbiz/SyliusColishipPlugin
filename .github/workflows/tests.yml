@@ -170,6 +170,7 @@ jobs:
           composer require monsieurbiz/sylius-coliship-plugin="*@dev"
 
       - name: Show flex server logs
+        if: ${{ always() }}
         run: docker logs --tail 100 flex
 
       - name: Update database schema
