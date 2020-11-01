@@ -1,6 +1,6 @@
 {
     "bundles": {
-        "MonsieurBiz\\SyliusColishipPlugin\\MonsieurBizSyliusColishipPlugin::class": [
+        "MonsieurBiz\\SyliusColishipPlugin\\MonsieurBizSyliusColishipPlugin": [
             "all"
         ]
     },

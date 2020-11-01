@@ -144,7 +144,7 @@ jobs:
       - name: Allow unsecure localhost flex server
         working-directory: ./sylius
         run: composer config secure-http false
-        
+
       - name: Setup some requirements
         working-directory: ./sylius
         run: |
