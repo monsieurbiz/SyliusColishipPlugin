@@ -26,6 +26,9 @@ jobs:
           sudo update-alternatives --set php /usr/bin/php${{ matrix.php }}
           php -v
 
+      - name: Composer v1
+        run: sudo composer self-update --1
+
       - uses: actions/cache@v1
         with:
           path: /home/runner/.composer/cache
@@ -85,6 +88,9 @@ jobs:
         run: |
           sudo update-alternatives --set php /usr/bin/php${{ matrix.php }}
           php -v
+
+      - name: Composer v1
+        run: sudo composer self-update --1
 
       - name: Setup timezone
         run: |
