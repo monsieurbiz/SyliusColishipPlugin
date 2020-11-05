@@ -66,116 +66,42 @@ class SettingsType extends AbstractSettingsType implements SettingsTypeInterface
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addWithDefaultCheckbox(
-                $builder,
-                'enabled',
-                CheckboxType::class,
-                [
-                    'required' => false,
-                ]
-            );
+        $isDefaultForm = $this->isDefaultForm($builder);
+        $constraints = $isDefaultForm ? [
+            new Assert\NotBlank(),
+        ] : [];
 
-        $this->addWithDefaultCheckbox(
-                $builder,
-                'debug',
-                CheckboxType::class,
-                [
-                    'required' => false,
-                ]
-            );
-
-        if ($this->isDefaultForm($builder)) {
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'fmtGeneral',
-                TextareaType::class, [
-                    'required' => true,
-                    'constraints' => [
-                        new Assert\NotBlank(),
-                    ],
-                ]
-            );
-
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'paymentState',
-                ChoiceType::class, [
-                    'required' => true,
-                    'choices' => $this->orderPaymentStateDirectory->getValues(),
-                    'constraints' => [
-                        new Assert\NotBlank(),
-                    ],
-                ]
-            );
-
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'shippingState',
-                ChoiceType::class, [
-                    'required' => true,
-                    'choices' => $this->orderShippingStateDirectory->getValues(),
-                    'constraints' => [
-                        new Assert\NotBlank(),
-                    ],
-                ]
-            );
-
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'methodCode',
-                ChoiceType::class, [
-                    'required' => true,
-                    'choices' => $this->shippingMethodCodeDirectory->getValues(),
-                    'constraints' => [
-                        new Assert\NotBlank(),
-                    ],
-                ]
-            );
-        } else {
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'fmtGeneral',
-                TextareaType::class, [
-                    'required' => false,
-                ]
-            );
-
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'paymentState',
-                ChoiceType::class, [
-                    'required' => false,
-                    'choices' => $this->orderPaymentStateDirectory->getValues(),
-                ]
-            );
-
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'shippingState',
-                ChoiceType::class, [
-                    'required' => false,
-                    'choices' => $this->orderShippingStateDirectory->getValues(),
-                ]
-            );
-
-            $this->addWithDefaultCheckbox(
-                $builder,
-                'methodCode',
-                ChoiceType::class, [
-                    'required' => false,
-                    'choices' => $this->shippingMethodCodeDirectory->getValues(),
-                ]
-            );
-        }
-
-        $this->addWithDefaultCheckbox(
-                $builder,
-                'exportFields',
-                ChoiceType::class, [
-                    'required' => false,
-                    'multiple' => true,
-                    'choices' => $this->fmtDirectory->getValues(),
-                ]
-            );
+        $this
+            ->addWithDefaultCheckbox($builder, 'enabled', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->addWithDefaultCheckbox($builder, 'debug', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->addWithDefaultCheckbox($builder, 'fmtGeneral', TextareaType::class, [
+                'required' => $isDefaultForm,
+                'constraints' => $constraints,
+            ])
+            ->addWithDefaultCheckbox($builder, 'paymentState', ChoiceType::class, [
+                'required' => $isDefaultForm,
+                'choices' => $this->orderPaymentStateDirectory->getValues(),
+                'constraints' => $constraints,
+            ])
+            ->addWithDefaultCheckbox($builder, 'shippingState', ChoiceType::class, [
+                'required' => $isDefaultForm,
+                'choices' => $this->orderShippingStateDirectory->getValues(),
+                'constraints' => $constraints,
+            ])
+            ->addWithDefaultCheckbox($builder, 'methodCode', ChoiceType::class, [
+                'required' => $isDefaultForm,
+                'choices' => $this->shippingMethodCodeDirectory->getValues(),
+                'constraints' => $constraints,
+            ])
+            ->addWithDefaultCheckbox($builder, 'exportFields', ChoiceType::class, [
+                'required' => false,
+                'multiple' => true,
+                'choices' => $this->fmtDirectory->getValues(),
+            ])
+        ;
     }
 }
