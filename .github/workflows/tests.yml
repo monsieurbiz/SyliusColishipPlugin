@@ -149,7 +149,7 @@ jobs:
         working-directory: ./sylius
         run: |
           composer config minimum-stability dev
-          composer config platform.php ${{ matrix.php }}
+          composer config --unset platform.php
 
       - name: Install monsieurbiz/sylius-settings-plugin
         working-directory: ./sylius
