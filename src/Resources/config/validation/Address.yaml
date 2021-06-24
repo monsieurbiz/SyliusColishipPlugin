@@ -2,63 +2,67 @@ Sylius\Component\Core\Model\Address:
     properties:
         firstName:
             - NotBlank:
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                groups: [mbiz_coliship, sylius_shipping_address_update]
             - Length:
-                  min: 2
-                  max: 35
-                  minMessage: sylius.address.first_name.min_length
-                  maxMessage: sylius.address.first_name.max_length
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                min: 2
+                max: 35
+                minMessage: sylius.address.first_name.min_length
+                maxMessage: sylius.address.first_name.max_length
+                groups: [mbiz_coliship, sylius_shipping_address_update]
         lastName:
             - NotBlank:
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                groups: [mbiz_coliship, sylius_shipping_address_update]
             - Length:
-                  min: 2
-                  max: 35
-                  minMessage: sylius.address.last_name.min_length
-                  maxMessage: sylius.address.last_name.max_length
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                min: 2
+                max: 35
+                minMessage: sylius.address.last_name.min_length
+                maxMessage: sylius.address.last_name.max_length
+                groups: [mbiz_coliship, sylius_shipping_address_update]
         company:
             - Length:
-                  max: 35
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                max: 35
+                groups: [mbiz_coliship, sylius_shipping_address_update]
         street:
             - NotBlank:
-                  message: sylius.address.street.not_blank
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                message: sylius.address.street.not_blank
+                groups: [mbiz_coliship, sylius_shipping_address_update]
             - Length:
-                  min: 2
-                  max: 35
-                  minMessage: sylius.address.street.min_length
-                  maxMessage: sylius.address.street.max_length
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                min: 2
+                max: 35
+                minMessage: sylius.address.street.min_length
+                maxMessage: sylius.address.street.max_length
+                groups: [mbiz_coliship, sylius_shipping_address_update]
         city:
             - NotBlank:
-                  message: sylius.address.city.not_blank
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                message: sylius.address.city.not_blank
+                groups: [mbiz_coliship, sylius_shipping_address_update]
             - Length:
-                  min: 2
-                  max: 35
-                  minMessage: sylius.address.city.min_length
-                  maxMessage: sylius.address.city.max_length
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                min: 2
+                max: 35
+                minMessage: sylius.address.city.min_length
+                maxMessage: sylius.address.city.max_length
+                groups: [mbiz_coliship, sylius_shipping_address_update]
         postcode:
             - NotBlank:
-                  message: sylius.address.postcode.not_blank
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                message: sylius.address.postcode.not_blank
+                groups: [mbiz_coliship, sylius_shipping_address_update]
             - Length:
-                  min: 2
-                  max: 9
-                  minMessage: sylius.address.postcode.min_length
-                  maxMessage: sylius.address.postcode.max_length
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                min: 2
+                max: 9
+                minMessage: sylius.address.postcode.min_length
+                maxMessage: sylius.address.postcode.max_length
+                groups: [mbiz_coliship, sylius_shipping_address_update]
         phoneNumber:
             - NotBlank:
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                groups: [mbiz_coliship, sylius_shipping_address_update]
             - Length:
-                  max: 20
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                max: 20
+                groups: [mbiz_coliship, sylius_shipping_address_update]
         provinceName:
             - Length:
-                  max: 35
-                  groups: [mbiz_coliship, sylius_shipping_address_update]
+                max: 35
+                groups: [mbiz_coliship, sylius_shipping_address_update]
+        countryCode:
+            - NotBlank:
+                message: sylius.address.country.not_blank
+                groups: [mbiz_coliship, sylius_shipping_address_update]
