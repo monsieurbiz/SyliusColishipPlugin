@@ -79,6 +79,10 @@ final class FmtMapping implements MappingInterface
             'CodeProduit' => function() {
                 return 'COLD';
             },
+            'Poids' => function(OrderInterface $order) {
+                //@TODO get current shipment only
+                return $order->getShipments()[0]->getShippingWeight();
+            }
         ];
     }
 
