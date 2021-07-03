@@ -2,7 +2,7 @@ monsieurbiz_coliship_admin_export:
     path: coliship/export/{channelCode}
     defaults:
         _controller: MonsieurBiz\SyliusColishipPlugin\Controller\Admin\ExportController::exportAction
-        
+
 monsieurbiz_coliship_admin_fmt_download:
     path: coliship/fmt/download/{channelCode}
     defaults:

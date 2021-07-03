@@ -1,7 +1,7 @@
 parameters:
-    sylius.form.type.order.validation_groups: [mbiz_coliship]
-    sylius.form.type.address.validation_groups: [mbiz_coliship]
-    sylius.form.type.checkout_address.validation_groups: [mbiz_coliship]
+    sylius.form.type.order.validation_groups: [ mbiz_coliship ]
+    sylius.form.type.address.validation_groups: [ mbiz_coliship ]
+    sylius.form.type.checkout_address.validation_groups: [ mbiz_coliship ]
 
 services:
     _defaults:
@@ -16,7 +16,7 @@ services:
             autowire: false
         Sylius\Component\Resource\Model\ResourceInterface:
             autowire: false
-            
+
     MonsieurBiz\SyliusColishipPlugin\:
         resource: '../../'
 
