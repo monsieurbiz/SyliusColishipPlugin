@@ -159,7 +159,7 @@ final class ColishipExporter implements ExporterInterface
             ->andWhere('o.channel = :channel')
             ->andWhere('o.paymentState = :paymentState')
             ->andWhere('o.shippingState = :shippingState')
-            ->andWhere('sm.code = :shippingMethod')
+            ->andWhere('sm.code IN (:shippingMethod)')
             ->setParameter('channel', $channel)
             ->setParameter('paymentState', $paymentState)
             ->setParameter('shippingState', $shippingState)

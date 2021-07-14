@@ -95,6 +95,7 @@ class SettingsType extends AbstractSettingsType implements SettingsTypeInterface
             ->addWithDefaultCheckbox($builder, 'methodCode', ChoiceType::class, [
                 'required' => $isDefaultForm,
                 'choices' => $this->shippingMethodCodeDirectory->getValues(),
+                'multiple' => true,
                 'constraints' => $constraints,
             ])
             ->addWithDefaultCheckbox($builder, 'exportFields', ChoiceType::class, [
