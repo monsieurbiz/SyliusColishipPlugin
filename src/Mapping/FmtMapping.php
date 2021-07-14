@@ -81,7 +81,7 @@ final class FmtMapping implements MappingInterface
             },
             'Poids' => function(OrderInterface $order) {
                 //@TODO get current shipment only
-                return $order->getShipments()[0]->getShippingWeight();
+                return $order->getShipments()->first()->getShippingWeight();
             }
         ];
     }
