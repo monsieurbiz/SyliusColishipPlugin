@@ -38,7 +38,7 @@ final class ShippingMethodCodeDirectory implements DirectoryInterface
         $values = [];
         /** @var ShippingMethodInterface $method */
         foreach ($this->shippingMethodRepository->findAll() as $method) {
-            $values[$method->getCode()] = $method->getCode();
+            $values[$method->getName()] = $method->getCode();
         }
 
         return $values;
