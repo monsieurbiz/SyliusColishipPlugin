@@ -13,6 +13,8 @@ monsieurbiz_coliship:
             actions:
                 export: Coliship Export
                 download_fmt: Download the FMT file
+        settings:
+            method_code_deprecated: 'Method code (Deprecated, use Method Codes instead)'
     form:
         address:
             service: Service

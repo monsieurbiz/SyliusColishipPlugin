@@ -93,6 +93,12 @@ class SettingsType extends AbstractSettingsType implements SettingsTypeInterface
                 'constraints' => $constraints,
             ])
             ->addWithDefaultCheckbox($builder, 'methodCode', ChoiceType::class, [
+                'label' => 'monsieurbiz_coliship.admin.settings.method_code_deprecated',
+                'required' => $isDefaultForm,
+                'choices' => $this->shippingMethodCodeDirectory->getValues(),
+                'constraints' => $constraints,
+            ])
+            ->addWithDefaultCheckbox($builder, 'methodCodes', ChoiceType::class, [
                 'required' => $isDefaultForm,
                 'choices' => $this->shippingMethodCodeDirectory->getValues(),
                 'multiple' => true,
