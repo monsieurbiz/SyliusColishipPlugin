@@ -7,7 +7,7 @@
     "require": {
         "php": "~7.4",
         "ext-mbstring": "*",
-        "sylius/sylius": "^1.7.0",
+        "sylius/sylius": "~1.7.0 || ~1.8.0",
         "monsieurbiz/sylius-settings-plugin": "^1.0.0"
     },
     "require-dev": {
