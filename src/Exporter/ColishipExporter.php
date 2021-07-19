@@ -149,7 +149,7 @@ final class ColishipExporter implements ExporterInterface
     {
         $paymentState = $this->colishipSettings->getCurrentValue($channel, null, 'paymentState');
         $shippingState = $this->colishipSettings->getCurrentValue($channel, null, 'shippingState');
-        $methodCode = $this->colishipSettings->getCurrentValue($channel, null, 'methodCode');
+        $methodCodes = $this->colishipSettings->getCurrentValue($channel, null, 'methodCodes') ?? [$this->colishipSettings->getCurrentValue($channel, null, 'methodCode')];
 
         /** @var QueryBuilder $qb */
         $qb = $this->orderRepository->createQueryBuilder('o');
@@ -159,11 +159,11 @@ final class ColishipExporter implements ExporterInterface
             ->andWhere('o.channel = :channel')
             ->andWhere('o.paymentState = :paymentState')
             ->andWhere('o.shippingState = :shippingState')
-            ->andWhere('sm.code IN (:shippingMethod)')
+            ->andWhere('sm.code IN (:methodCodes)')
             ->setParameter('channel', $channel)
             ->setParameter('paymentState', $paymentState)
             ->setParameter('shippingState', $shippingState)
-            ->setParameter('shippingMethod', $methodCode)
+            ->setParameter('methodCodes', $methodCodes)
             ->orderBy('o.number', 'ASC')
             ->getQuery()
             ->getResult()
