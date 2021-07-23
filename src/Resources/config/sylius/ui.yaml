@@ -3,3 +3,11 @@ sylius_ui:
         monsieurbiz.coliship.settings.admin.update.actions:
             blocks:
                 buttons: '@MonsieurBizSyliusColishipPlugin/Admin/Settings/Actions/_buttons.html.twig'
+
+        sylius.admin.shipping_method.update.form:
+            blocks:
+                _form: '@MonsieurBizSyliusColishipPlugin/Admin/ShippingMethod/Edit/_form.html.twig'
+
+        sylius.admin.shipping_method.create.form:
+            blocks:
+                _form: '@MonsieurBizSyliusColishipPlugin/Admin/ShippingMethod/Create/_form.html.twig'

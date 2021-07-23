@@ -27,3 +27,9 @@ sylius_addressing:
         address:
             classes:
                 model: App\Entity\Addressing\Address
+
+sylius_shipping:
+    resources:
+        shipping_method:
+            classes:
+                model: App\Entity\Shipping\ShippingMethod

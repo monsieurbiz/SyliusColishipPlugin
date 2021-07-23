@@ -76,13 +76,15 @@ final class FmtMapping implements MappingInterface
             'ServiceDestinataire' => function(OrderInterface $order) {
                 return $order->getShippingAddress()->getService();
             },
-            'CodeProduit' => function() {
-                return 'COLD';
+            'CodeProduit' => function(OrderInterface $order) {
+                $shipment = $order->getShipments()->first();
+
+                return $shipment ? $shipment->getMethod()->getColishipProductCode() ?? 'COLD' : 'COLD';
             },
             'Poids' => function(OrderInterface $order) {
                 //@TODO get current shipment only
                 return $order->getShipments()->first()->getShippingWeight();
-            }
+            },
         ];
     }
 
