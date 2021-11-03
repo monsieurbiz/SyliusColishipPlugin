@@ -12,9 +12,9 @@
 
 <h1 align="center">Coliship for Sylius</h1>
 
-[![Coliship Plugin license](https://img.shields.io/github/license/monsieurbiz/SyliusColishipPlugin?public)](https://github.com/monsieurbiz/SyliusColishipPlugin/blob/master/LICENSE)
-![Tests](https://github.com/monsieurbiz/SyliusColishipPlugin/workflows/Tests/badge.svg?branch=master)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/quality/g/monsieurbiz/SyliusColishipPlugin/master?logo=scrutinizer)](https://scrutinizer-ci.com/g/monsieurbiz/SyliusColishipPlugin/?branch=master)
+[![Coliship Plugin license](https://img.shields.io/github/license/monsieurbiz/SyliusColishipPlugin?public)](https://github.com/monsieurbiz/SyliusColishipPlugin/blob/master/LICENSE.txt)
+[![Tests Status](https://img.shields.io/github/workflow/status/monsieurbiz/SyliusColishipPlugin/Tests?logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ATests)
+[![Security Status](https://img.shields.io/github/workflow/status/monsieurbiz/SyliusColishipPlugin/Security?label=security&logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ASecurity)
 
 This plugin gives you an enhanced address with all Coliship fields (that's all for now).
 
