@@ -151,10 +151,10 @@ final class ColishipExporter implements ExporterInterface
         $shippingState = $this->colishipSettings->getCurrentValue($channel, null, 'shippingState');
         $methodCodes = $this->colishipSettings->getCurrentValue($channel, null, 'methodCodes') ?? [$this->colishipSettings->getCurrentValue($channel, null, 'methodCode')];
 
-        /** @var QueryBuilder $qb */
-        $qb = $this->orderRepository->createQueryBuilder('o');
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->orderRepository->createQueryBuilder('o');
 
-        return $qb->leftJoin('o.shipments', 's')
+        return $queryBuilder->leftJoin('o.shipments', 's')
             ->leftJoin('s.method', 'sm')
             ->andWhere('o.channel = :channel')
             ->andWhere('o.paymentState = :paymentState')

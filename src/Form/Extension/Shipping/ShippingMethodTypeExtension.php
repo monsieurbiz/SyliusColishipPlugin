@@ -20,6 +20,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class ShippingMethodTypeExtension extends AbstractTypeExtension
 {
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

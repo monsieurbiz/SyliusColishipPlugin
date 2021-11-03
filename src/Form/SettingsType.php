@@ -64,6 +64,9 @@ class SettingsType extends AbstractSettingsType implements SettingsTypeInterface
         $this->shippingMethodCodeDirectory = $shippingMethodCodeDirectory;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $isDefaultForm = $this->isDefaultForm($builder);
