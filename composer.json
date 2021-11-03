@@ -23,6 +23,9 @@
         "lchrusciel/api-test-case": "^3.0",
         "friendsofphp/php-cs-fixer": "^2.16.1"
     },
+    "conflict": {
+        "doctrine/dbal": "^3"
+    },
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
