@@ -5,7 +5,7 @@
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
 
@@ -26,39 +26,18 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class ColishipExporter implements ExporterInterface
 {
-    /**
-     * @var SettingsInterface
-     */
     private SettingsInterface $colishipSettings;
 
-    /**
-     * @var MappingInterface
-     */
     private MappingInterface $fmtMapping;
 
-    /**
-     * @var DirectoryInterface
-     */
     private DirectoryInterface $fmtDirectory;
 
-    /**
-     * @var OrderRepositoryInterface
-     */
     private OrderRepositoryInterface $orderRepository;
 
-    /**
-     * @var EventDispatcherInterface
-     */
     private EventDispatcherInterface $eventDispatcher;
 
     /**
      * ColishipExporter constructor.
-     *
-     * @param SettingsInterface $colishipSettings
-     * @param MappingInterface $fmtMapping
-     * @param DirectoryInterface $fmtDirectory
-     * @param OrderRepositoryInterface $orderRepository
-     * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(
         SettingsInterface $colishipSettings,
@@ -93,11 +72,6 @@ final class ColishipExporter implements ExporterInterface
         return $file;
     }
 
-    /**
-     * @param ChannelInterface $channel
-     * @param OrderInterface $order
-     * @param SplTempFileObject $file
-     */
     private function processOrder(ChannelInterface $channel, OrderInterface $order, SplTempFileObject $file): void
     {
         $data = [];
@@ -119,32 +93,16 @@ final class ColishipExporter implements ExporterInterface
         ) . $this->getCsvEnclosure() . "\n");
     }
 
-    /**
-     * @param string $field
-     * @param OrderInterface $order
-     *
-     * @return string
-     */
     private function getFieldValue(string $field, OrderInterface $order): string
     {
         return $this->fmtMapping->getValue($field, $order);
     }
 
-    /**
-     * @param ChannelInterface $channel
-     *
-     * @return array
-     */
     private function getCsvFields(ChannelInterface $channel): array
     {
         return $this->colishipSettings->getCurrentValue($channel, null, 'exportFields');
     }
 
-    /**
-     * @param ChannelInterface $channel
-     *
-     * @return array
-     */
     private function getOrdersToExport(ChannelInterface $channel): array
     {
         $paymentState = $this->colishipSettings->getCurrentValue($channel, null, 'paymentState');
@@ -170,25 +128,16 @@ final class ColishipExporter implements ExporterInterface
         ;
     }
 
-    /**
-     * @return string
-     */
     private function getCsvDelimiter(): string
     {
         return ';';
     }
 
-    /**
-     * @return string
-     */
     private function getCsvEnclosure(): string
     {
         return '"';
     }
 
-    /**
-     * @return string
-     */
     private function getCsvEscape(): string
     {
         return '"';

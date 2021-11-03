@@ -5,7 +5,7 @@
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
 
@@ -15,9 +15,6 @@ namespace MonsieurBiz\SyliusColishipPlugin\Directory;
 
 final class FmtDirectory implements DirectoryInterface
 {
-    /**
-     * @var array
-     */
     private array $values = [
         'Adresse 1 du destinataire : Numéro et libellé de voie' => 'Adresse1',
         "Adresse 1 de l'expéditeur : Numéro et libellé de voie" => 'Adresse1Expediteur',

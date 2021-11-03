@@ -5,7 +5,7 @@
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
 
@@ -18,15 +18,10 @@ use Sylius\Component\Shipping\Model\ShippingMethodInterface;
 
 final class ShippingMethodCodeDirectory implements DirectoryInterface
 {
-    /**
-     * @var ShippingMethodRepositoryInterface
-     */
     private ShippingMethodRepositoryInterface $shippingMethodRepository;
 
     /**
      * ShippingMethodCodeDirectory constructor.
-     *
-     * @param ShippingMethodRepositoryInterface $shippingMethodRepository
      */
     public function __construct(ShippingMethodRepositoryInterface $shippingMethodRepository)
     {
