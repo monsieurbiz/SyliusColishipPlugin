@@ -5,7 +5,7 @@
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
 
@@ -20,13 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class DownloadFmtController extends AbstractController
 {
-    /**
-     * @param ChannelRepositoryInterface $channelRepository
-     * @param SettingsInterface $colishipSettings
-     * @param string $channelCode
-     *
-     * @return Response
-     */
     public function downloadAction(
         ChannelRepositoryInterface $channelRepository,
         SettingsInterface $colishipSettings,

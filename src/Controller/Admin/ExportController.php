@@ -5,7 +5,7 @@
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
 
@@ -20,13 +20,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 final class ExportController extends AbstractController
 {
-    /**
-     * @param ChannelRepositoryInterface $channelRepository
-     * @param ExporterInterface $colishipExporter
-     * @param string $channelCode
-     *
-     * @return StreamedResponse
-     */
     public function exportAction(
         ChannelRepositoryInterface $channelRepository,
         ExporterInterface $colishipExporter,
@@ -39,7 +32,7 @@ final class ExportController extends AbstractController
         $file = $colishipExporter->exportToFile($channel);
 
         return new StreamedResponse(
-            function() use ($file): void {
+            function () use ($file): void {
                 ob_start();
                 while ($file->valid()) {
                     echo $file->fread(1024);

@@ -5,7 +5,7 @@
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
 
@@ -24,33 +24,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class SettingsType extends AbstractSettingsType implements SettingsTypeInterface
 {
-    /**
-     * @var DirectoryInterface
-     */
     private DirectoryInterface $fmtDirectory;
 
-    /**
-     * @var DirectoryInterface
-     */
     private DirectoryInterface $orderPaymentStateDirectory;
 
-    /**
-     * @var DirectoryInterface
-     */
     private DirectoryInterface $orderShippingStateDirectory;
 
-    /**
-     * @var DirectoryInterface
-     */
     private DirectoryInterface $shippingMethodCodeDirectory;
 
     /**
      * SettingsType constructor.
-     *
-     * @param DirectoryInterface $fmtDirectory
-     * @param DirectoryInterface $orderPaymentStateDirectory
-     * @param DirectoryInterface $orderShippingStateDirectory
-     * @param DirectoryInterface $shippingMethodCodeDirectory
      */
     public function __construct(
         DirectoryInterface $fmtDirectory,
@@ -64,6 +47,9 @@ class SettingsType extends AbstractSettingsType implements SettingsTypeInterface
         $this->shippingMethodCodeDirectory = $shippingMethodCodeDirectory;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $isDefaultForm = $this->isDefaultForm($builder);

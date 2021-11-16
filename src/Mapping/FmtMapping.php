@@ -5,7 +5,7 @@
  *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
 
@@ -22,66 +22,66 @@ final class FmtMapping implements MappingInterface
     public function __construct()
     {
         $this->mapping = [
-            'ReferenceExpedition' => function(OrderInterface $order) {
+            'ReferenceExpedition' => function (OrderInterface $order) {
                 return $order->getNumber();
             },
-            'RaisonSociale' => function(OrderInterface $order) {
+            'RaisonSociale' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getCompany();
             },
-            'NomDestinataire' => function(OrderInterface $order) {
+            'NomDestinataire' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getLastName();
             },
-            'Prenom' => function(OrderInterface $order) {
+            'Prenom' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getFirstName();
             },
-            'Adresse1' => function(OrderInterface $order) {
+            'Adresse1' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getStreet();
             },
-            'Adresse2' => function(OrderInterface $order) {
+            'Adresse2' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getFloor();
             },
-            'Adresse3' => function(OrderInterface $order) {
+            'Adresse3' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getEntrance();
             },
-            'Adresse4' => function(OrderInterface $order) {
+            'Adresse4' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getLocality();
             },
-            'Commune' => function(OrderInterface $order) {
+            'Commune' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getCity();
             },
-            'CodePostal' => function(OrderInterface $order) {
+            'CodePostal' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getPostcode();
             },
-            'CodePays' => function(OrderInterface $order) {
+            'CodePays' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getCountryCode();
             },
-            'Telephone' => function(OrderInterface $order) {
+            'Telephone' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getPhoneNumber();
             },
-            'CodePorte1' => function(OrderInterface $order) {
+            'CodePorte1' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getDoorCode1();
             },
-            'CodePorte2' => function(OrderInterface $order) {
+            'CodePorte2' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getDoorCode2();
             },
-            'InstructionLivraison' => function(OrderInterface $order) {
+            'InstructionLivraison' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getShippingInstructions();
             },
-            'Interphone' => function(OrderInterface $order) {
+            'Interphone' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getIntercom();
             },
-            'Mail' => function(OrderInterface $order) {
+            'Mail' => function (OrderInterface $order) {
                 return $order->getCustomer()->getEmail();
             },
-            'ServiceDestinataire' => function(OrderInterface $order) {
+            'ServiceDestinataire' => function (OrderInterface $order) {
                 return $order->getShippingAddress()->getService();
             },
-            'CodeProduit' => function(OrderInterface $order) {
+            'CodeProduit' => function (OrderInterface $order) {
                 $shipment = $order->getShipments()->first();
 
                 return $shipment ? $shipment->getMethod()->getColishipProductCode() ?? 'COLD' : 'COLD';
             },
-            'Poids' => function(OrderInterface $order) {
+            'Poids' => function (OrderInterface $order) {
                 //@TODO get current shipment only
                 return $order->getShipments()->first()->getShippingWeight();
             },
