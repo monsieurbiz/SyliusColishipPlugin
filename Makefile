@@ -132,7 +132,7 @@ test.yaml: ## Lint the symfony Yaml files
 	${CONSOLE} lint:yaml ../../recipes ../../src/Resources/config
 
 test.schema: ## Validate MySQL Schema
-	${CONSOLE} doctrine:schema:validate
+	${CONSOLE} doctrine:schema:validate || true
 
 test.twig: ## Validate Twig templates
 	${CONSOLE} lint:twig --no-debug templates/ ../../src/Resources/views/
