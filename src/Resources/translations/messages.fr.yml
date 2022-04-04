@@ -14,6 +14,7 @@ monsieurbiz_coliship:
                 export: Export Coliship
                 download_fmt: Télécharger le fichier FMT
         settings:
+            export_locale: 'Locale à utiliser dans le fichier d''export'
             method_code_deprecated: 'Method code (Déprécié, utiliser Method Codes)'
             shipping_method:
                 header: 'Paramètres Coliship du mode de livraison'

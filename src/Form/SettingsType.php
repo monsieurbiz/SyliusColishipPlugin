@@ -19,6 +19,7 @@ use MonsieurBiz\SyliusSettingsPlugin\Form\SettingsTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -94,6 +95,10 @@ class SettingsType extends AbstractSettingsType implements SettingsTypeInterface
                 'required' => false,
                 'multiple' => true,
                 'choices' => $this->fmtDirectory->getValues(),
+            ])
+            ->addWithDefaultCheckbox($builder, 'exportLocale', TextType::class, [
+                'required' => false,
+                'label' => 'monsieurbiz_coliship.admin.settings.export_locale',
             ])
         ;
     }

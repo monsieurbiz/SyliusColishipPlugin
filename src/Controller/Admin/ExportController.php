@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace MonsieurBiz\SyliusColishipPlugin\Controller\Admin;
 
 use MonsieurBiz\SyliusColishipPlugin\Exporter\ExporterInterface;
+use MonsieurBiz\SyliusSettingsPlugin\Settings\SettingsInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -21,6 +22,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 final class ExportController extends AbstractController
 {
     public function exportAction(
+        SettingsInterface $colishipSettings,
         ChannelRepositoryInterface $channelRepository,
         ExporterInterface $colishipExporter,
         string $channelCode
@@ -29,6 +31,10 @@ final class ExportController extends AbstractController
             throw $this->createNotFoundException('Channel not found');
         }
 
+        $locale = $colishipSettings->getCurrentValue($channel, null, 'exportLocale');
+        if (!empty($locale)) {
+            setlocale(\LC_CTYPE, $locale);
+        }
         $file = $colishipExporter->exportToFile($channel);
 
         return new StreamedResponse(
