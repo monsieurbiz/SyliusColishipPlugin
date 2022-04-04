@@ -55,6 +55,9 @@ jobs:
       - name: Composer Github Auth
         run: composer config -g github-oauth.github.com ${{ github.token }}
 
+      - name: Composer allow plugins
+        run: composer config -g allow-plugins true
+
       - run: make install
 
       - run: make test.composer
