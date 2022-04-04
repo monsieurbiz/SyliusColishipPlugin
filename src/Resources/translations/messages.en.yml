@@ -13,11 +13,11 @@ monsieurbiz_coliship:
             actions:
                 export: Coliship Export
                 download_fmt: Download the FMT file
+            shipping_method:
+                header: 'Coliship configuration for Shipping Method'
         settings:
             export_locale: 'Locale used to convert the export file'
             method_code_deprecated: 'Method code (Deprecated, use Method Codes instead)'
-            shipping_method:
-                header: 'Coliship configuration for Shipping Method'
     form:
         address:
             service: Service
