@@ -62,7 +62,7 @@ ${APP_DIR}/node_modules: yarn.install
 application: .php-version php.ini ${APP_DIR} setup_application ${APP_DIR}/docker-compose.yaml
 
 ${APP_DIR}:
-	(${COMPOSER} create-project --prefer-dist --no-scripts --no-progress --no-install sylius/sylius-standard="${SYLIUS_VERSION}" ${APP_DIR})
+	(${COMPOSER} create-project --no-interaction --prefer-dist --no-scripts --no-progress --no-install sylius/sylius-standard="${SYLIUS_VERSION}" ${APP_DIR})
 
 setup_application:
 	rm -f ${APP_DIR}/yarn.lock
@@ -73,7 +73,8 @@ setup_application:
 	$(MAKE) apply_dist
 	$(MAKE) ${APP_DIR}/.php-version
 	$(MAKE) ${APP_DIR}/php.ini
-	(cd ${APP_DIR} && ${COMPOSER} install)
+	cd ${APP_DIR} && ${COMPOSER} install --no-interaction
+	cd ${APP_DIR} && ${COMPOSER} symfony:recipes:install --no-interaction
 
 ${APP_DIR}/docker-compose.yaml:
 	rm -f ${APP_DIR}/docker-compose.yml
