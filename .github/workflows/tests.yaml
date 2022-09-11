@@ -9,6 +9,8 @@ jobs:
 
   php:
 
+    name: "Tests (PHP ${{ matrix.php }})"
+
     runs-on: ubuntu-latest
 
     strategy:
