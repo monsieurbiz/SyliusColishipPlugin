@@ -8,6 +8,8 @@ jobs:
 
   security:
 
+    name: "Security (PHP ${{ matrix.php }})"
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -45,4 +47,4 @@ jobs:
       - name: Install PHP dependencies
         run: composer update --prefer-dist
 
-      - uses: symfonycorp/security-checker-action@v2
+      - uses: symfonycorp/security-checker-action@v3

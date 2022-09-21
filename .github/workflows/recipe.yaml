@@ -9,6 +9,8 @@ jobs:
 
   recipe:
 
+    name: "Recipe (PHP ${{ matrix.php }}, Sylius ${{ matrix.sylius }})"
+
     runs-on: ubuntu-latest
 
     env:
@@ -17,13 +19,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4' ,'8.0']
-        sylius: ["~1.8.0", "~1.9.0", "~1.10.0"]
+        php: ["7.4" ,"8.0"]
+        sylius: ["~1.8.0", "~1.9.0", "~1.10.0", "~1.11.0"]
         exclude:
-          - php: 8.0
+          - php: "8.0"
             sylius: "~1.8.0"
-          - php: 8.0
+          - php: "8.0"
             sylius: "~1.9.0"
+          - php: "7.4"
+            sylius: "~1.11.0"
 
     steps:
       - name: Setup PHP
@@ -72,6 +76,7 @@ jobs:
       - name: Setup some requirements
         working-directory: ./sylius
         run: |
+            composer config --no-plugins allow-plugins true
             composer config repositories.plugin '{"type": "path", "url": "../plugin/"}'
             composer config extra.symfony.allow-contrib true
             composer config secure-http false
