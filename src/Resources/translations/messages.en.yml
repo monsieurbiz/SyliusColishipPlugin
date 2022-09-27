@@ -28,6 +28,7 @@ monsieurbiz_coliship:
             doorCode2: Door code 2
             intercom: Intercom
             shippingInstructions: Delivery instructions
+            recipientReference: Recipient reference
         shipping_method:
             coliship_product_code: Coliship Product Code
             coliship_product_code_help: The value designates the product offer of the package to be created according to its delivery characteristics (range, destination, delivery method). For example, "COLD" for home delivery without signature, "COL" for home delivery with signature etc.
