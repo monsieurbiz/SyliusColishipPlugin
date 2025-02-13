@@ -1,11 +1,9 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Coliship plugin for Sylius.
- *
+ * This file is part of Monsieur Biz's Sylius Coliship Plugin for Sylius.
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
- *
- * For the full copyright and license information, please view the LICENSE.txt
+ * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -33,7 +31,7 @@ final class ShippingMethodCodeDirectory implements DirectoryInterface
         $values = [];
         /** @var ShippingMethodInterface $method */
         foreach ($this->shippingMethodRepository->findAll() as $method) {
-            $values[sprintf('%s (%s)', $method->getName(), $method->getCode())] = $method->getCode();
+            $values[\sprintf('%s (%s)', $method->getName(), $method->getCode())] = $method->getCode();
         }
 
         return $values;

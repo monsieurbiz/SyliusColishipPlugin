@@ -1,11 +1,9 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Coliship plugin for Sylius.
- *
+ * This file is part of Monsieur Biz's Sylius Coliship Plugin for Sylius.
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
- *
- * For the full copyright and license information, please view the LICENSE.txt
+ * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -13,12 +11,19 @@ declare(strict_types=1);
 
 namespace MonsieurBiz\SyliusColishipPlugin\Mapping;
 
+use MonsieurBiz\SyliusColishipPlugin\Entity\Addressing\ColishipAddressInterface;
+use MonsieurBiz\SyliusColishipPlugin\Entity\Shipping\ColishipShippingMethodInterface;
+use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 
 final class FmtMapping implements MappingInterface
 {
     private array $mapping = [];
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function __construct()
     {
         $this->mapping = [
@@ -26,64 +31,116 @@ final class FmtMapping implements MappingInterface
                 return $order->getNumber();
             },
             'RaisonSociale' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getCompany();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getCompany();
             },
             'NomDestinataire' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getLastName();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getLastName();
             },
             'Prenom' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getFirstName();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getFirstName();
             },
             'Adresse1' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getStreet();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getStreet();
             },
             'Adresse2' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getFloor();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getFloor();
             },
             'Adresse3' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getEntrance();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getEntrance();
             },
             'Adresse4' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getLocality();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getLocality();
             },
             'Commune' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getCity();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getCity();
             },
             'CodePostal' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getPostcode();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getPostcode();
             },
             'CodePays' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getCountryCode();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getCountryCode();
             },
             'Telephone' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getPhoneNumber();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getPhoneNumber();
             },
             'CodePorte1' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getDoorCode1();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getDoorCode1();
             },
             'CodePorte2' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getDoorCode2();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getDoorCode2();
             },
             'InstructionLivraison' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getShippingInstructions();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getShippingInstructions();
             },
             'Interphone' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getIntercom();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getIntercom();
             },
             'Mail' => function (OrderInterface $order) {
-                return $order->getCustomer()->getEmail();
+                return $order->getCustomer()?->getEmail();
             },
             'ServiceDestinataire' => function (OrderInterface $order) {
-                return $order->getShippingAddress()->getService();
+                /** @var (AddressInterface&ColishipAddressInterface)|null $shippingAddress */
+                $shippingAddress = $order->getShippingAddress();
+
+                return $shippingAddress?->getService();
             },
             'CodeProduit' => function (OrderInterface $order) {
                 $shipment = $order->getShipments()->first();
+                $shipmentMethod = $shipment ? $shipment->getMethod() : null;
 
-                return $shipment ? $shipment->getMethod()->getColishipProductCode() ?? 'COLD' : 'COLD';
+                return $shipment && $shipmentMethod instanceof ColishipShippingMethodInterface ?
+                    $shipmentMethod->getColishipProductCode() ?? 'COLD'
+                    : 'COLD';
             },
             'Poids' => function (OrderInterface $order) {
-                //@TODO get current shipment only
-                return $order->getShipments()->first()->getShippingWeight();
+                $shipment = $order->getShipments()->first();
+
+                return $shipment ? $shipment->getShippingWeight() : '';
             },
         ];
     }

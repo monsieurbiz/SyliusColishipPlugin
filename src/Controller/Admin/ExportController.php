@@ -1,11 +1,9 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Coliship plugin for Sylius.
- *
+ * This file is part of Monsieur Biz's Sylius Coliship Plugin for Sylius.
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
- *
- * For the full copyright and license information, please view the LICENSE.txt
+ * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -43,7 +41,7 @@ final class ExportController extends AbstractController
                 while ($file->valid()) {
                     echo $file->fread(1024);
                 }
-                $content = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', ob_get_clean());
+                $content = (string) iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', (string) ob_get_clean());
                 echo str_replace("\n", "\r\n", str_replace("\r", '', $content));
             },
             200,

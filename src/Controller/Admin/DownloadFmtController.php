@@ -1,11 +1,9 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Coliship plugin for Sylius.
- *
+ * This file is part of Monsieur Biz's Sylius Coliship Plugin for Sylius.
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
- *
- * For the full copyright and license information, please view the LICENSE.txt
+ * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -35,9 +33,10 @@ final class DownloadFmtController extends AbstractController
         ];
 
         $response = new Response(
-            null, 200,
+            null,
+            200,
             [
-                'Content-Disposition' => sprintf('attachment; filename="%s.FMT"', $channelCode),
+                'Content-Disposition' => \sprintf('attachment; filename="%s.FMT"', $channelCode),
                 'Content-Type' => 'text/fmt',
             ]
         );

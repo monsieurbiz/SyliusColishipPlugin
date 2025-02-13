@@ -2,32 +2,70 @@
 
 <h1 align="center">Coliship for Sylius</h1>
 
-[![Coliship Plugin license](https://img.shields.io/github/license/monsieurbiz/SyliusColishipPlugin?public)](https://github.com/monsieurbiz/SyliusColishipPlugin/blob/master/LICENSE.txt)
-[![Tests](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/tests.yaml/badge.svg)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/tests.yaml)
-[![Security](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/security.yaml/badge.svg)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/security.yaml)
-[![Flex Recipe](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/recipe.yaml/badge.svg)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/recipe.yaml)
+[![Tests Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusColishipPlugin/tests.yaml?branch=master&logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ATests)
+[![Recipe Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusColishipPlugin/recipe.yaml?branch=master&label=recipes&logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ASecurity)
+[![Security Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusColishipPlugin/security.yaml?branch=master&label=security&logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ASecurity)
 
 This plugin gives you an enhanced address with all Coliship fields (that's all for now).
 
-**⚠️ This plugin is not released yet.**
+## Compatibility
+
+| Sylius Version | PHP Version     |
+|----------------|-----------------|
+| 1.12           | 8.2 - 8.3       |
+| 1.13           | 8.2 - 8.3       |
+| 1.14           | 8.2 - 8.3       |
 
 ## Installation
 
-⚙️ To Be Defined.
+If you want to use our recipes, you can configure your composer.json by running:
 
-## How it works
+```bash
+composer config --no-plugins --json extra.symfony.endpoint '["https://api.github.com/repos/monsieurbiz/symfony-recipes/contents/index.json?ref=flex/master","flex://defaults"]'
+```
 
-⚙️ To Be Defined.
+```bash
+composer require monsieurbiz/sylius-coliship-plugin
+```
 
-## Testing
+Change your `config/bundles.php` file to add the line for the plugin : 
 
-⚙️ To Be Defined.
+```php
+<?php
 
-## Sponsors
+return [
+    //..
+    MonsieurBiz\SyliusColishipPlugin\MonsieurBizSyliusColishipPlugin::class => ['all' => true],
+];
+```
 
-This plugin is sponsored by:
+Then create the config file in `config/packages/monsieurbiz_coliship_plugin.yaml` :
 
-- [Epices Rœllinger](https://www.epices-roellinger.com/)
+```yaml
+imports:
+    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/monsieurbiz/settings.yaml" }
+    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/sylius/grid.yaml" }
+    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/sylius/ui.yaml" }
+```
+
+Then import the routes in `config/routes/monsieurbiz_coliship_plugin.yaml` : 
+
+```yaml
+monsieurbiz_coliship_admin:
+    resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/routes/admin.yaml"
+    prefix: /%sylius_admin.path_name%
+```
+
+Update `App\Entity\Shipping\ShippingMethod` to implements `ColishipShippingMethodInterface` and use `ColishipShippingMethodTrait`.
+
+Update `App\Entity\Addressing\Address` to implements `ColishipAddressInterface` and use `ColishipAddressTrait`.
+
+Finally, update your database schema :
+
+```bash
+bin/console doctrine:migrations:diff
+bin/console doctrine:migrations:migrate
+```
 
 ## Contributing
 

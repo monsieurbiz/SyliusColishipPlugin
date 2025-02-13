@@ -1,11 +1,9 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Coliship plugin for Sylius.
- *
+ * This file is part of Monsieur Biz's Sylius Coliship Plugin for Sylius.
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
- *
- * For the full copyright and license information, please view the LICENSE.txt
+ * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -14,7 +12,6 @@ declare(strict_types=1);
 namespace MonsieurBiz\SyliusColishipPlugin\Exporter;
 
 use Doctrine\ORM\QueryBuilder;
-use MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface;
 use MonsieurBiz\SyliusColishipPlugin\Event\ProcessOrderEvent;
 use MonsieurBiz\SyliusColishipPlugin\Mapping\MappingInterface;
 use MonsieurBiz\SyliusSettingsPlugin\Settings\SettingsInterface;
@@ -30,8 +27,6 @@ final class ColishipExporter implements ExporterInterface
 
     private MappingInterface $fmtMapping;
 
-    private DirectoryInterface $fmtDirectory;
-
     private OrderRepositoryInterface $orderRepository;
 
     private EventDispatcherInterface $eventDispatcher;
@@ -42,13 +37,11 @@ final class ColishipExporter implements ExporterInterface
     public function __construct(
         SettingsInterface $colishipSettings,
         MappingInterface $fmtMapping,
-        DirectoryInterface $fmtDirectory,
         OrderRepositoryInterface $orderRepository,
         EventDispatcherInterface $eventDispatcher
     ) {
         $this->colishipSettings = $colishipSettings;
         $this->fmtMapping = $fmtMapping;
-        $this->fmtDirectory = $fmtDirectory;
         $this->orderRepository = $orderRepository;
         $this->eventDispatcher = $eventDispatcher;
     }
@@ -110,7 +103,7 @@ final class ColishipExporter implements ExporterInterface
         $methodCodes = $this->colishipSettings->getCurrentValue($channel, null, 'methodCodes') ?? [$this->colishipSettings->getCurrentValue($channel, null, 'methodCode')];
 
         /** @var QueryBuilder $queryBuilder */
-        $queryBuilder = $this->orderRepository->createQueryBuilder('o');
+        $queryBuilder = $this->orderRepository->createQueryBuilder('o'); /** @phpstan-ignore-line */
 
         return $queryBuilder->leftJoin('o.shipments', 's')
             ->leftJoin('s.method', 'sm')
