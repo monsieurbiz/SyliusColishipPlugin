@@ -1,11 +1,9 @@
 <?php
 
 /*
- * This file is part of Monsieur Biz' Coliship plugin for Sylius.
- *
+ * This file is part of Monsieur Biz's Sylius Coliship Plugin for Sylius.
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
- *
- * For the full copyright and license information, please view the LICENSE.txt
+ * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -82,7 +80,7 @@ final class FmtMapping implements MappingInterface
                 return $shipment ? $shipment->getMethod()->getColishipProductCode() ?? 'COLD' : 'COLD';
             },
             'Poids' => function (OrderInterface $order) {
-                //@TODO get current shipment only
+                // @TODO get current shipment only
                 return $order->getShipments()->first()->getShippingWeight();
             },
         ];
