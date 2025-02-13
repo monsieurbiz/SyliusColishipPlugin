@@ -8,8 +8,6 @@
 
 This plugin gives you an enhanced address with all Coliship fields (that's all for now).
 
-**⚠️ This plugin is not released yet.**
-
 ## Compatibility
 
 | Sylius Version | PHP Version     |
@@ -20,15 +18,54 @@ This plugin gives you an enhanced address with all Coliship fields (that's all f
 
 ## Installation
 
-⚙️ To Be Defined.
+If you want to use our recipes, you can configure your composer.json by running:
 
-## How it works
+```bash
+composer config --no-plugins --json extra.symfony.endpoint '["https://api.github.com/repos/monsieurbiz/symfony-recipes/contents/index.json?ref=flex/master","flex://defaults"]'
+```
 
-⚙️ To Be Defined.
+```bash
+composer require monsieurbiz/sylius-coliship-plugin
+```
 
-## Testing
+Change your `config/bundles.php` file to add the line for the plugin : 
 
-⚙️ To Be Defined.
+```php
+<?php
+
+return [
+    //..
+    MonsieurBiz\SyliusColishipPlugin\MonsieurBizSyliusColishipPlugin::class => ['all' => true],
+];
+```
+
+Then create the config file in `config/packages/monsieurbiz_coliship_plugin.yaml` :
+
+```yaml
+imports:
+    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/monsieurbiz/settings.yaml" }
+    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/sylius/grid.yaml" }
+    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/sylius/ui.yaml" }
+```
+
+Then import the routes in `config/routes/monsieurbiz_coliship_plugin.yaml` : 
+
+```yaml
+monsieurbiz_coliship_admin:
+    resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/routes/admin.yaml"
+    prefix: /%sylius_admin.path_name%
+```
+
+Update `App\Entity\Shipping\ShippingMethod` to implements `ColishipShippingMethodInterface` and use `ColishipShippingMethodTrait`.
+
+Update `App\Entity\Addressing\Address` to implements `ColishipAddressInterface` and use `ColishipAddressTrait`.
+
+Finally, update your database schema :
+
+```bash
+bin/console doctrine:migrations:diff
+bin/console doctrine:migrations:migrate
+```
 
 ## Contributing
 
