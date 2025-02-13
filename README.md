@@ -2,14 +2,21 @@
 
 <h1 align="center">Coliship for Sylius</h1>
 
-[![Coliship Plugin license](https://img.shields.io/github/license/monsieurbiz/SyliusColishipPlugin?public)](https://github.com/monsieurbiz/SyliusColishipPlugin/blob/master/LICENSE.txt)
-[![Tests](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/tests.yaml/badge.svg)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/tests.yaml)
-[![Security](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/security.yaml/badge.svg)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/security.yaml)
-[![Flex Recipe](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/recipe.yaml/badge.svg)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions/workflows/recipe.yaml)
+[![Tests Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusColishipPlugin/tests.yaml?branch=master&logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ATests)
+[![Recipe Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusColishipPlugin/recipe.yaml?branch=master&label=recipes&logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ASecurity)
+[![Security Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusColishipPlugin/security.yaml?branch=master&label=security&logo=github)](https://github.com/monsieurbiz/SyliusColishipPlugin/actions?query=workflow%3ASecurity)
 
 This plugin gives you an enhanced address with all Coliship fields (that's all for now).
 
 **⚠️ This plugin is not released yet.**
+
+## Compatibility
+
+| Sylius Version | PHP Version     |
+|----------------|-----------------|
+| 1.12           | 8.2 - 8.3       |
+| 1.13           | 8.2 - 8.3       |
+| 1.14           | 8.2 - 8.3       |
 
 ## Installation
 
@@ -22,12 +29,6 @@ This plugin gives you an enhanced address with all Coliship fields (that's all f
 ## Testing
 
 ⚙️ To Be Defined.
-
-## Sponsors
-
-This plugin is sponsored by:
-
-- [Epices Rœllinger](https://www.epices-roellinger.com/)
 
 ## Contributing
 

@@ -20,6 +20,7 @@ trait ColishipShippingMethodTrait
     /**
      * @ORM\Column(name="coliship_product_code", type="string", length=10, nullable=true)
      */
+    #[ORM\Column(name: 'coliship_product_code', type: 'string', length: 10, nullable: true)]
     protected ?string $colishipProductCode = null;
 
     public function getColishipProductCode(): ?string
