@@ -41,7 +41,7 @@ final class ExportController extends AbstractController
                 while ($file->valid()) {
                     echo $file->fread(1024);
                 }
-                $content = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', ob_get_clean());
+                $content = (string) iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', (string) ob_get_clean());
                 echo str_replace("\n", "\r\n", str_replace("\r", '', $content));
             },
             200,

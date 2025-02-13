@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace MonsieurBiz\SyliusColishipPlugin\Exporter;
 
 use Doctrine\ORM\QueryBuilder;
-use MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface;
 use MonsieurBiz\SyliusColishipPlugin\Event\ProcessOrderEvent;
 use MonsieurBiz\SyliusColishipPlugin\Mapping\MappingInterface;
 use MonsieurBiz\SyliusSettingsPlugin\Settings\SettingsInterface;
@@ -28,8 +27,6 @@ final class ColishipExporter implements ExporterInterface
 
     private MappingInterface $fmtMapping;
 
-    private DirectoryInterface $fmtDirectory;
-
     private OrderRepositoryInterface $orderRepository;
 
     private EventDispatcherInterface $eventDispatcher;
@@ -40,13 +37,11 @@ final class ColishipExporter implements ExporterInterface
     public function __construct(
         SettingsInterface $colishipSettings,
         MappingInterface $fmtMapping,
-        DirectoryInterface $fmtDirectory,
         OrderRepositoryInterface $orderRepository,
         EventDispatcherInterface $eventDispatcher
     ) {
         $this->colishipSettings = $colishipSettings;
         $this->fmtMapping = $fmtMapping;
-        $this->fmtDirectory = $fmtDirectory;
         $this->orderRepository = $orderRepository;
         $this->eventDispatcher = $eventDispatcher;
     }
@@ -108,7 +103,7 @@ final class ColishipExporter implements ExporterInterface
         $methodCodes = $this->colishipSettings->getCurrentValue($channel, null, 'methodCodes') ?? [$this->colishipSettings->getCurrentValue($channel, null, 'methodCode')];
 
         /** @var QueryBuilder $queryBuilder */
-        $queryBuilder = $this->orderRepository->createQueryBuilder('o');
+        $queryBuilder = $this->orderRepository->createQueryBuilder('o'); /** @phpstan-ignore-line */
 
         return $queryBuilder->leftJoin('o.shipments', 's')
             ->leftJoin('s.method', 'sm')
