@@ -1,7 +1,7 @@
 sylius_grid:
     templates:
         action:
-            coliship_export: "@MonsieurBizSyliusColishipPlugin/Admin/Order/Grid/Action/_coliship_export.html.twig"
+            coliship_export: "@MonsieurBizSyliusColishipPlugin/admin/order/grid/action/coliship_export.html.twig"
     grids:
         sylius_admin_order:
             actions:

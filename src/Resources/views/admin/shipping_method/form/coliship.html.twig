@@ -1,0 +1,12 @@
+{% set form = hookable_metadata.context.form %}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="card-title">
+            {{ 'monsieurbiz_coliship.admin.ui.shipping_method.header'|trans }}
+        </div>
+    </div>
+    <div class="card-body">
+        {{ form_row(form.colishipProductCode) }}
+    </div>
+</div>

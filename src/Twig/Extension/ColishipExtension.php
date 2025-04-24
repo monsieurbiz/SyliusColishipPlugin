@@ -47,7 +47,7 @@ final class ColishipExtension extends AbstractExtension implements ExtensionInte
         $channels = [];
         /** @var ChannelInterface $channel */
         foreach ($this->channelRepository->findAll() as $channel) {
-            if ($this->colishipSettings->getCurrentValue($channel, '', 'enabled')) {
+            if ($this->colishipSettings->getCurrentValue($channel, null, 'enabled')) {
                 $channels[] = $channel;
             }
         }

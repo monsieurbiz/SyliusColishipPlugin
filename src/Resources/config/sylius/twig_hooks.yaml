@@ -1,0 +1,16 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.monsieurbiz_coliship_settings.edit.content.header.title_block.actions':
+            download_fmt:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/settings/actions/download_fmt.html.twig'
+                priority: 200
+
+        'sylius_admin.shipping_method.create.content.form#right':
+            coliship:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/shipping_method/form/coliship.html.twig'
+                priority: 0
+
+        'sylius_admin.shipping_method.update.content.form#right':
+            coliship:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/shipping_method/form/coliship.html.twig'
+                priority: 0
