@@ -5,7 +5,7 @@
     "description": "Improve your Sylius for Coliship.",
     "license": "MIT",
     "require": {
-        "monsieurbiz/sylius-settings-plugin": "^2.0.0",
+        "monsieurbiz/sylius-settings-plugin": "^2.0.1",
         "php": "^8.2",
         "ext-mbstring": "*",
         "sylius/sylius": "~2.0.0"
