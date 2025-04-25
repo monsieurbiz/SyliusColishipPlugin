@@ -1,0 +1,5 @@
+{% set address = hookable_metadata.context.address %}
+
+{% if address.service is not null %}
+    <span>{{ "monsieurbiz_coliship.ui.address.shippingInstructions"|trans({"%instructions%": address.shippingInstructions}) }}</span>
+{% endif %}

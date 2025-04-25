@@ -15,6 +15,37 @@ sylius_twig_hooks:
                 template: '@MonsieurBizSyliusColishipPlugin/admin/shipping_method/form/coliship.html.twig'
                 priority: 0
 
+        'sylius_shop.shared.address':
+            service:
+                template: '@MonsieurBizSyliusColishipPlugin/shared/address/service.html.twig'
+                priority: 550
+            locality:
+                template: '@MonsieurBizSyliusColishipPlugin/shared/address/locality.html.twig'
+                priority: 350
+            city_and_postcode:
+                enabled: false
+            postcode_and_city:
+                template: "@MonsieurBizSyliusColishipPlugin/shared/address/postcode_and_city.html.twig"
+                priority: 200
+            phone_number:
+                template: "@MonsieurBizSyliusColishipPlugin/shared/address/phone_number.html.twig"
+                priority: -100
+            entrance:
+                template: '@MonsieurBizSyliusColishipPlugin/shared/address/entrance.html.twig'
+                priority: -200
+            floor:
+                template: '@MonsieurBizSyliusColishipPlugin/shared/address/floor.html.twig'
+                priority: -300
+            door_codes:
+                template: '@MonsieurBizSyliusColishipPlugin/shared/address/door_codes.html.twig'
+                priority: -400
+            intercom:
+                template: '@MonsieurBizSyliusColishipPlugin/shared/address/intercom.html.twig'
+                priority: -500
+            shipping_instructions:
+                template: '@MonsieurBizSyliusColishipPlugin/shared/address/shipping_instructions.html.twig'
+                priority: -600
+
         'sylius_shop.shared.form.address':
             company:
                 enabled: false
