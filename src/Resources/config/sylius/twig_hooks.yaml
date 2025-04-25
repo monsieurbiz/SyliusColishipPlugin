@@ -68,7 +68,7 @@ sylius_twig_hooks:
             shipping_instructions:
                 template: '@MonsieurBizSyliusColishipPlugin/shared/form/address/shipping_instructions.html.twig'
                 priority: -400
-                
+
         'sylius_shop.shared.form.address.additional_information_1':
             locality:
                 template: '@MonsieurBizSyliusColishipPlugin/shared/form/address/additional_information_1/locality.html.twig'
@@ -76,7 +76,7 @@ sylius_twig_hooks:
             floor:
                 template: '@MonsieurBizSyliusColishipPlugin/shared/form/address/additional_information_1/floor.html.twig'
                 priority: 0
-                
+
         'sylius_shop.shared.form.address.additional_information_2':
             entrance:
                 template: '@MonsieurBizSyliusColishipPlugin/shared/form/address/additional_information_2/entrance.html.twig'
@@ -85,5 +85,30 @@ sylius_twig_hooks:
                 template: '@MonsieurBizSyliusColishipPlugin/shared/form/address/additional_information_2/entrance_contact.html.twig'
                 priority: 0
 
-#        'sylius_admin.order.update.content.form.billing_address':
-#        'sylius_admin.order.update.content.form.shipping_address':
+        'sylius_admin.order.update.content.form.billing_address':
+            company:
+                template: '@SyliusAdmin/order/form/common/company.html.twig'
+                priority: -100
+            additional_information_1:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_1.html.twig'
+                priority: -200
+            additional_information_2:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_2.html.twig'
+                priority: -300
+            shipping_instructions:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/shipping_instructions.html.twig'
+                priority: -400
+
+        'sylius_admin.order.update.content.form.shipping_address':
+            company:
+                template: '@SyliusAdmin/order/form/common/company.html.twig'
+                priority: -100
+            additional_information_1:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_1.html.twig'
+                priority: -200
+            additional_information_2:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_2.html.twig'
+                priority: -300
+            shipping_instructions:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/shipping_instructions.html.twig'
+                priority: -400
