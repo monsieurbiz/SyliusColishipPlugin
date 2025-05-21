@@ -1,0 +1,48 @@
+{% macro address(address) %}
+    <address>
+        {% if address.company %}
+            {{ address.company }}<br/>
+        {% endif %}
+        {% if address.service is not null %}
+            {{ address.service }}<br/>
+        {% endif %}
+        {{ address.firstName }} {{ address.lastName }}<br/>
+        {% if address.locality is not null %}
+            {{ address.locality }}<br/>
+        {% endif %}
+        {{ address.street }}<br/>
+        {{ address.postcode }} {{ address.city }}<br/>
+        {{ address.countryCode|sylius_country_name|upper }}<br/>
+        {% if address|sylius_province_name is not empty %}
+            {{ address|sylius_province_name }}<br/>
+        {% endif %}
+        {% if address.phoneNumber is not null %}
+            {{ "monsieurbiz_coliship.ui.address.phonenumber"|trans({"%number%": address.phoneNumber}) }}<br/>
+        {% endif %}
+
+        {% if address.entrance is not null %}
+            {{ "monsieurbiz_coliship.ui.address.entrance"|trans({"%entrance%": address.entrance}) }}
+            <br/>
+        {% endif %}
+        {% if address.floor is not null %}
+            {{ "monsieurbiz_coliship.ui.address.floor"|trans({"%floor%": address.floor}) }}
+            <br/>
+        {% endif %}
+
+        {% if address.doorCode1 is not null %}
+            {{ "monsieurbiz_coliship.ui.address.doorCode1"|trans({"%code%": address.doorCode1}) }}
+            <br/>
+        {% endif %}
+        {% if address.doorCode2 is not null %}
+            {{ "monsieurbiz_coliship.ui.address.doorCode2"|trans({"%code%": address.doorCode2}) }}
+            <br/>
+        {% endif %}
+        {% if address.intercom is not null %}
+            {{ "monsieurbiz_coliship.ui.address.intercom"|trans({"%intercom%": address.intercom}) }}
+            <br/>
+        {% endif %}
+        {% if address.shippingInstructions is not null %}
+            {{ "monsieurbiz_coliship.ui.address.shippingInstructions"|trans({"%instructions%": address.shippingInstructions}) }}
+        {% endif %}
+    </address>
+{% endmacro %}

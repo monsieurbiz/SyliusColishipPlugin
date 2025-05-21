@@ -1,0 +1,114 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.monsieurbiz_coliship_settings.edit.content.header.title_block.actions':
+            download_fmt:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/settings/actions/download_fmt.html.twig'
+                priority: 200
+
+        'sylius_admin.shipping_method.create.content.form#right':
+            coliship:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/shipping_method/form/coliship.html.twig'
+                priority: 0
+
+        'sylius_admin.shipping_method.update.content.form#right':
+            coliship:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/shipping_method/form/coliship.html.twig'
+                priority: 0
+
+        'sylius_shop.shared.address':
+            service:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/address/service.html.twig'
+                priority: 550
+            locality:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/address/locality.html.twig'
+                priority: 350
+            city_and_postcode:
+                enabled: false
+            postcode_and_city:
+                template: "@MonsieurBizSyliusColishipPlugin/shop/shared/address/postcode_and_city.html.twig"
+                priority: 200
+            phone_number:
+                template: "@MonsieurBizSyliusColishipPlugin/shop/shared/address/phone_number.html.twig"
+                priority: -100
+            entrance:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/address/entrance.html.twig'
+                priority: -200
+            floor:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/address/floor.html.twig'
+                priority: -300
+            door_codes:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/address/door_codes.html.twig'
+                priority: -400
+            intercom:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/address/intercom.html.twig'
+                priority: -500
+            shipping_instructions:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/address/shipping_instructions.html.twig'
+                priority: -600
+
+        'sylius_shop.shared.form.address':
+            company:
+                enabled: false
+            postcode:
+                enabled: false
+            city:
+                enabled: false
+            postcode_and_city:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/postcode_and_city.html.twig'
+                priority: 0
+            company_fields:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/company_fields.html.twig'
+                priority: -100
+            additional_information_1:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/additional_information_1.html.twig'
+                priority: -200
+            additional_information_2:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/additional_information_2.html.twig'
+                priority: -300
+            shipping_instructions:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/shipping_instructions.html.twig'
+                priority: -400
+
+        'sylius_shop.shared.form.address.additional_information_1':
+            locality:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/additional_information_1/locality.html.twig'
+                priority: 100
+            floor:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/additional_information_1/floor.html.twig'
+                priority: 0
+
+        'sylius_shop.shared.form.address.additional_information_2':
+            entrance:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/additional_information_2/entrance.html.twig'
+                priority: 100
+            entrance_contact:
+                template: '@MonsieurBizSyliusColishipPlugin/shop/shared/form/address/additional_information_2/entrance_contact.html.twig'
+                priority: 0
+
+        'sylius_admin.order.update.content.form.billing_address':
+            company:
+                template: '@SyliusAdmin/order/form/common/company.html.twig'
+                priority: -100
+            additional_information_1:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_1.html.twig'
+                priority: -200
+            additional_information_2:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_2.html.twig'
+                priority: -300
+            shipping_instructions:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/shipping_instructions.html.twig'
+                priority: -400
+
+        'sylius_admin.order.update.content.form.shipping_address':
+            company:
+                template: '@SyliusAdmin/order/form/common/company.html.twig'
+                priority: -100
+            additional_information_1:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_1.html.twig'
+                priority: -200
+            additional_information_2:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/additional_information_2.html.twig'
+                priority: -300
+            shipping_instructions:
+                template: '@MonsieurBizSyliusColishipPlugin/admin/order/form/common/shipping_instructions.html.twig'
+                priority: -400

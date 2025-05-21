@@ -26,3 +26,13 @@ services:
     MonsieurBiz\SyliusColishipPlugin\Directory\DirectoryInterface $shippingMethodCodeDirectory: '@MonsieurBiz\SyliusColishipPlugin\Directory\ShippingMethodCodeDirectory'
     MonsieurBiz\SyliusColishipPlugin\Mapping\MappingInterface $fmtMapping: '@MonsieurBiz\SyliusColishipPlugin\Mapping\FmtMapping'
     MonsieurBiz\SyliusColishipPlugin\Exporter\ExporterInterface $colishipExporter: '@MonsieurBiz\SyliusColishipPlugin\Exporter\ColishipExporter'
+
+    # Replaces the service with our to add custom fields to the address form in the checkout
+    sylius_shop.twig.component.checkout.address.form:
+        class: MonsieurBiz\SyliusColishipPlugin\Twig\Component\Checkout\Address\FormComponent
+        arguments:
+            $repository: '@sylius.repository.order'
+            $resourceClass: '%sylius.model.order.class%'
+            $formClass: Sylius\Bundle\ShopBundle\Form\Type\Checkout\AddressType
+        tags:
+            - { name: sylius.live_component.shop, key: sylius_shop:checkout:address:form }

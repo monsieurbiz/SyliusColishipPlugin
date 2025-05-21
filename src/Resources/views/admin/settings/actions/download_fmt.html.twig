@@ -1,0 +1,16 @@
+{% set channels = monsieurbiz_coliship_export_channels() %}
+{% if channels|length > 0 %}
+    {{ include('@SyliusAdmin/shared/grid/action/links.html.twig', {
+        action: {
+            label: 'monsieurbiz_coliship.admin.ui.actions.download_fmt',
+        },
+        options: {
+            icon: 'bi:download',
+            label: 'monsieurbiz_coliship.admin.ui.actions.download_fmt',
+            links: channels|map(channel => {
+                label: channel.name|default(channel.code),
+                url: path('monsieurbiz_coliship_admin_fmt_download', { channelCode: channel.code }),
+            }),
+        }
+    }) }}
+{% endif %}

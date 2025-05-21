@@ -41,6 +41,6 @@ final class DownloadFmtController extends AbstractController
             ]
         );
 
-        return $this->render('@MonsieurBizSyliusColishipPlugin/Coliship/fmt.twig', $data, $response);
+        return $this->render('@MonsieurBizSyliusColishipPlugin/coliship/fmt.twig', $data, $response);
     }
 }

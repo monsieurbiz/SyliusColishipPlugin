@@ -1,0 +1,5 @@
+{% set address = hookable_metadata.context.address %}
+
+{% if address.locality is not null %}
+    <span>{{ address.locality }}</span>
+{% endif %}

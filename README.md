@@ -10,11 +10,11 @@ This plugin gives you an enhanced address with all Coliship fields (that's all f
 
 ## Compatibility
 
-| Sylius Version | PHP Version     |
-|----------------|-----------------|
-| 1.12           | 8.2 - 8.3       |
-| 1.13           | 8.2 - 8.3       |
-| 1.14           | 8.2 - 8.3       |
+| Sylius Version | PHP Version |
+|----------------|-------------|
+| 2.0            | 8.2 - 8.3   |
+
+ℹ️ For Sylius 1.x, see our [1.x branch](https://github.com/monsieurbiz/SyliusColishipPlugin/tree/1.x) and all 1.x releases.
 
 ## Installation
 
@@ -43,9 +43,7 @@ Then create the config file in `config/packages/monsieurbiz_coliship_plugin.yaml
 
 ```yaml
 imports:
-    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/monsieurbiz/settings.yaml" }
-    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/sylius/grid.yaml" }
-    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/sylius/ui.yaml" }
+    - { resource: "@MonsieurBizSyliusColishipPlugin/Resources/config/config.yaml" }
 ```
 
 Then import the routes in `config/routes/monsieurbiz_coliship_plugin.yaml` : 
