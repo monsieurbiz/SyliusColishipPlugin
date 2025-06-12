@@ -20,7 +20,7 @@ use Sylius\Component\Core\Model\OrderInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveListener;
 
-final class FormComponent extends BaseFormComponent
+class FormComponent extends BaseFormComponent
 {
     /** @use ResourceFormComponentTrait<OrderInterface> */
     use ResourceFormComponentTrait;
