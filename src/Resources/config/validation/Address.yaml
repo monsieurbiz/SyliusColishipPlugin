@@ -1,4 +1,7 @@
 Sylius\Component\Core\Model\Address:
+    constraints:
+        -   Sylius\Bundle\AddressingBundle\Validator\Constraints\ProvinceAddressConstraint:
+                groups: [ mbiz_coliship, sylius_shipping_address_update ]
     properties:
         firstName:
             -   NotBlank:
