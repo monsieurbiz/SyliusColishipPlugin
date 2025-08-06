@@ -17,6 +17,7 @@ use Sylius\Bundle\ShopBundle\Twig\Component\Checkout\Address\FormComponent as Ba
 use Sylius\Bundle\UiBundle\Twig\Component\ResourceFormComponentTrait;
 use Sylius\Bundle\UiBundle\Twig\Component\TemplatePropTrait;
 use Sylius\Component\Core\Model\OrderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveListener;
 
@@ -48,5 +49,14 @@ class FormComponent extends BaseFormComponent
         $formAddressValues['shippingInstructions'] = $address->getShippingInstructions();
 
         $this->formValues[$field] = $formAddressValues;
+    }
+
+    protected function instantiateForm(): FormInterface
+    {
+        return $this->formFactory->create(
+            $this->formClass,
+            $this->resource,
+            ['customer' => $this->customerContext->getCustomer()],
+        );
     }
 }
